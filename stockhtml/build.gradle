@@ -1,0 +1,44 @@
+
+group 'org.szelc'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+sourceCompatibility = 9
+
+apply from: 'javafx.plugin'
+
+//mainClassName = 'MainFX'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // jsoup HTML parser library @ https://jsoup.org/
+    compile 'org.jsoup:jsoup:1.10.3'
+
+    // https://mvnrepository.com/artifact/log4j/log4j
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+
+
+
+}
+
+
+
+
+jar {
+    baseName = 'MainApp3'
+    version = '1.0.0-SNAPSHOT'
+    manifest {
+        attributes(
+                "Manifest-Version": "1.1",
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' '),
+                "Main-Class": "org.szelc.stockthml.Main2"
+
+        )
+    }
+}
+
