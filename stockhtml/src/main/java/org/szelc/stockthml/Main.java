@@ -22,6 +22,7 @@ import java.util.List;
 
 
 public class Main extends Application {
+
     Logger log = Logger.getLogger(Main.class);
 
 
