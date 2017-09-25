@@ -166,7 +166,7 @@ public class DayCompanyQuote {
     }
 
 
-   
+
 
     @Override
     public String toString() {
