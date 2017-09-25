@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.szelc.app.antstock.StockMessagesController">
+    <children>
+       <BorderPane prefHeight="371.0" prefWidth="431.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+             <ListView layoutX="79.0" layoutY="45.0" prefHeight="400.0" prefWidth="1000.0" fx:id="messageListView" />
+            </top>
+           <center>
+               <WebView fx:id="webViewMessages" prefHeight="400.0" prefWidth="900.0"/>
+           </center>
+
+       </BorderPane>
+   </children>
+</AnchorPane>

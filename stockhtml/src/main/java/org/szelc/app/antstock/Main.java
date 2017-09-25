@@ -11,12 +11,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * Main Application. This class handles navigation and user session.
+ * MessageLoader Application. This class handles navigation and user session.
  */
 public class Main extends Application {
 
@@ -32,7 +33,31 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
+        System.out.println("Start");
+        try {
+            stage = primaryStage;
+            stage.setTitle("WebUI");
+            stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
+            stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+            gotoBrowser();
+            primaryStage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /**
+        Parent root = FXMLLoader.load(getClass().getResource("WebUI.fxml"));
+
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+         */
+    }
+
+    //@Override
+    public void start2(Stage primaryStage) {
         try {
             stage = primaryStage;
             stage.setTitle("AntStock");
@@ -40,6 +65,15 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             gotoLogin();
             primaryStage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void gotoBrowser() {
+        try {
+            replaceSceneContent("WebUI.fxml");
+
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,6 +94,7 @@ public class Main extends Application {
     private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
 
+        System.out.println("Ladje resource ["+fxml+"]");
         InputStream in = Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
@@ -67,7 +102,7 @@ public class Main extends Application {
         try {
             page = (AnchorPane) loader.load(in);
         } finally {
-            in.close();
+                //in.close();
         } 
         Scene scene = new Scene(page, 800, 600);
         stage.setScene(scene);
