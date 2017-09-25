@@ -9,6 +9,8 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class StockParser {
@@ -67,25 +69,24 @@ public class StockParser {
         return "http://biznes.onet.pl/gielda/komunikaty-espi-ebi/"+page+",komunikaty-spolek.html";
     }
 
-    public int displayMultiplePageMesssageOnet(int numberOfPages, boolean onlyToday, List companyFilters){
-        int result = 0;
-
+    public List<String> displayMultiplePageMesssageOnet(int numberOfPages, boolean onlyToday, List companyFilters){
+        List<String> result = new LinkedList<>();
         for(int i=1; i<=numberOfPages;i++){
-            result += displayMessageOnet(i, onlyToday, companyFilters);
+            result.addAll(displayMessageOnet(i, onlyToday, companyFilters));
         }
         return result;
     }
 
-    public int displayMessageOnet(int numberPage, boolean onlyToday, List companyFilters){
+    public List<String> displayMessageOnet(int numberPage, boolean onlyToday, List companyFilters){
         log.info("Parsing page ["+numberPage+"]");
-        int result = 0;
+        List<String> result = new ArrayList();
         Document doc = null;
         URL_MESSAGE_ONET = getOnetMessage(numberPage);
         try {
             doc = Jsoup.parse(new URL(URL_MESSAGE_ONET), 10000);
         } catch (IOException e) {
             log.error("Can't loading page ["+URL_MESSAGE_ONET+"]");
-            return -1;
+            return result;
         }
         //log.info("Start parsing page ["+URL_MESSAGE_ONET+"]\n");
         Elements table = doc.getElementsByClass("dataTable easyTable");
@@ -115,7 +116,7 @@ public class StockParser {
                 log.info(datetime+" : "+company+" : "+cols.get(2).select("a").html());
                 String href = cols.get(2).select("a").attr("href");
                 log.info("http://biznes.onet.pl"+href+"\n");
-                result++;
+                result.add("http://biznes.onet.pl"+href);
             }
         }
 

@@ -19,15 +19,15 @@ import java.util.List;
 
 
 
-public class Main extends Application {
+public class MessageLoader extends Application {
 
-    Logger log = Logger.getLogger(Main.class);
+    Logger log = Logger.getLogger(MessageLoader.class);
 
 
     //0 - evaluate
     //1 - portfel
     //2 - transactioned
-    private List getCompanyList(int type){
+    private static List getCompanyList(int type){
         String[] fileNames = new String[]{"companiesFromEvaluate", "companiesFromWallet", "companiesFromTransaction"};
         String fileName = "C:\\WORKSPACE\\AntStock3\\Storage\\cache\\companies\\"+fileNames[type]+".txt";
         try {
@@ -37,7 +37,12 @@ public class Main extends Application {
         }
     }
 
-    public Main() {
+    public MessageLoader() {
+        loadMessageForCompanies();
+
+    }
+
+    public static List<String> loadMessageForCompanies(){
         StockParser stockParser = new StockParser();
         //stockParser.displayDividendBossa();
 
@@ -46,12 +51,13 @@ public class Main extends Application {
         //0 - evaluate
         //1 - portfel
         //2 - transactioned
-        int countMessage = stockParser.displayMultiplePageMesssageOnet(15, onlyToday, getCompanyList(0));
-        log.info("Readed number of message ["+countMessage+"]");
+        List<String> result= stockParser.displayMultiplePageMesssageOnet(1, onlyToday, getCompanyList(0));
+        //log.info("Readed number of message ["+countMessage+"]");
 
         //int count = stockParser.displayQuotesNewConnectFromBankier();
-       // int count = stockParser.displayQuotesGpwFromBankier();
+        // int count = stockParser.displayQuotesGpwFromBankier();
         //log.info(count);
+        return result;
     }
 
     @Override
@@ -93,6 +99,6 @@ public class Main extends Application {
 
     public static void main(String args[]){
         System.out.println("Started stockhtml");
-        new Main();
+        new MessageLoader();
     }
 }
