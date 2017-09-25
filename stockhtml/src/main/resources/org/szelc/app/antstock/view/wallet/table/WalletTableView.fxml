@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+
+<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <stylesheets>
+        <URL value="@../../main.css"/>
+        <URL value="@wallettableview.css"/>
+    </stylesheets>
+        <children>
+        
+   
+        <TableView fx:id="table" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" 
+                   AnchorPane.topAnchor="10" xmlns:fx="http://javafx.com/fxml/1">
+            <columns>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Order" id="order" > 
+                    <cellValueFactory>
+                        <PropertyValueFactory property="order" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Company" id="company">                    
+                    <cellValueFactory>
+                        <PropertyValueFactory property="company" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Shares" id="numberOfShares">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="numberSharesStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Avg. buy" id="avgPriceForShare">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="avgPriceForShareStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Price" id="actualPrice">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="actualPriceStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Total buy" id="priceForActiveShare">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="priceForActiveShareStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Total price" id="totalActualPrice">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalActualPriceStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Profit (zł)" id="moneyProfit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="moneyProfitStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Profit (%)" id="percentProfit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="percentProfitStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Value of total (%)" id="percentValueForTotal" > 
+                    <cellValueFactory>
+                        <PropertyValueFactory property="percentValueForTotalStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Shares B/S" id="numberSharesFullTransaction">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="numberSharesFullTransactionStr" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Avg. buy B/S" id="avgPriceFullTransaction">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="avgPriceFullTransactionStr" />
+                    </cellValueFactory>
+                </TableColumn>
+            
+                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Avg. sell B/S" id="avgSellFullTransaction">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="avgSellFullTransactionStr" />
+                    </cellValueFactory>
+                </TableColumn>
+  
+                <TableColumn minWidth="120.0" prefWidth="-1.0" text="Profit  (%) B/S" id="percentProfitFullTransaction">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="percentProfitFullTransactionStr" />
+                    </cellValueFactory>
+                </TableColumn>
+           
+                <TableColumn minWidth="120.0" prefWidth="-1.0" text="Profit (zł) B/S" id="moneyProfitFullTransaction">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="moneyProfitFullTransactionStr" />
+                    </cellValueFactory>
+                </TableColumn>
+            
+                <TableColumn minWidth="120.0" prefWidth="-1.0" text="Eval profit (%)" id="evaluatePercentProfit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="evaluatePercentProfitStr" />
+                    </cellValueFactory>
+                </TableColumn>
+            
+                <TableColumn minWidth="120.0" prefWidth="-1.0" text="Eval profit (zł)" id="evaluateMoneyProfit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="evaluateMoneyProfitStr" />
+                    </cellValueFactory>
+                </TableColumn>
+            
+            </columns>
+        </TableView>
+    </children>
+       
+</fx:root>

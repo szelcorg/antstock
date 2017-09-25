@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="843.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.szelc.app.antstock.app.AntStockController">
+    <stylesheets>
+        <URL value="@../../../../../../resources/antstock2.css" />
+    </stylesheets>
+   <children>      
+        <fx:include fx:id="stockMainTabbed" source="../../../../../../resources/javafx/Tabbed.fxml" />
+   </children>
+</AnchorPane>

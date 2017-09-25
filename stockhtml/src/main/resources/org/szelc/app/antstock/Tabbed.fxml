@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0"
+         xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.szelc.app.antstock.view.tabbed.TabbedController">
+
+    <tabs>
+
+        <Tab text="Quotes">
+            <content>
+                <fx:include fx:id="quotesView" source="QuotesView.fxml" />
+            </content>
+        </Tab>
+
+     <Tab text="Wallet">
+            <content>
+                <fx:include fx:id="walletView" source="/org/szelc/app/antstock/view/wallet/WalletView.fxml" />
+            </content>
+        </Tab>
+
+        <Tab text="Evaluate">
+            <content>
+                <fx:include fx:id="evaluateView" source="/org/szelc/app/antstock/view/evaluate/EvaluateView.fxml" />
+            </content>
+        </Tab>
+
+
+        <Tab text="Statystyki">
+            <content>
+                <fx:include fx:id="statisticView" source="/org/szelc/app/antstock/view/statistic/StatisticView.fxml" />
+            </content>
+        </Tab>
+
+        <Tab text="Transaction">
+            <content>
+                <fx:include fx:id="transactionView" source="/org/szelc/app/antstock/view/transaction/TransactionView.fxml" />
+            </content>
+        </Tab>
+
+        <Tab text="Transaction defined">
+            <content>
+                <fx:include fx:id="transactionDefinedToView" source="/org/szelc/app/antstock/view/transactiondefined/TransactionDefinedView.fxml" />
+            </content>
+        </Tab>
+
+
+
+        <Tab text="Administracja">
+            <content>
+                <fx:include fx:id="adminView" source="/org/szelc/app/antstock/view/admin/AdminView.fxml" />
+            </content>
+        </Tab>
+
+        <Tab text="Wykresy">
+            <content>
+                <fx:include fx:id="quotesChartView" source="/org/szelc/app/antstock/view/quotes/chart/QuotesChartView.fxml" />
+            </content>
+        </Tab>
+
+        <Tab text="Wykresy test">
+            <content>
+                <fx:include fx:id="chartView" source="/org/szelc/app/antstock/view/chart/ChartView.fxml" />
+            </content>
+        </Tab>
+</tabs>
+</TabPane>

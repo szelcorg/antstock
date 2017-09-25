@@ -1,4 +1,0 @@
-Manifest-Version: 1.1
-Class-Path: jfxrt.jar jsoup-1.10.3.jar log4j-1.2.16.jar
-Main-Class: org.szelc.stockthml.Main2
-

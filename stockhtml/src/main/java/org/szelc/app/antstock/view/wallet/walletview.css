@@ -1,0 +1,50 @@
+/*
+ * Empty Stylesheet file.
+ */
+.table-cell{
+    -fx-alignment: CENTER-RIGHT;
+}
+
+/*.table-row-cell {
+    -fx-cell-size: 0px;
+}*/
+
+#profitNoActiveShares, #profitActiveShares, #profitShares{
+    -fx-underline: true;
+}
+
+
+#totalPayBuyNoActiveShares, #selledMoneyBackNoActiveShares, #totalPayActiveShares, #evaluateSellActiveShares, #totalPayShares, #totalSellMoneyBack{
+    -fx-font-weight: bold;
+ 
+}
+
+#textClosedTransaction, #textOpenTransaction, #textAllTransaction {
+    -fx-font-weight: bold;
+}
+
+#percentProfitNoActiveShares, #percentProfitActiveShares, #percentProfitShares {
+     -fx-alignment: CENTER-RIGHT;
+}
+
+.changeUp .text{
+    -fx-text-fill: green;
+    -fx-fill: green;
+     -fx-alignment: CENTER-RIGHT;
+}
+
+.changeDown .text{
+    -fx-text-fill: red;
+    -fx-fill: red;
+     -fx-alignment: CENTER-RIGHT;
+}
+
+.changeEq .text{
+    -fx-text-fill: blue;
+    -fx-fill: blue;
+     -fx-alignment: CENTER-RIGHT;
+}
+
+.mainFxmlClass {
+ 
+}

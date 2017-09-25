@@ -1,0 +1,133 @@
+#course, #change, #reference, #open, #high, #low, #volume, #volumeMoney, #date{
+    -fx-alignment: CENTER-RIGHT;
+}
+
+#company, #course, #change {
+    -fx-font-weight: bold;
+
+}
+
+#date .text{
+    -fx-underline: true;
+}
+
+#company .text{
+    -fx-text-fill: darkcyan;
+    -fx-fill: darkcyan ;    
+}
+
+
+
+
+/*.table-row-cell:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+ 
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: -fx-table-cell-border-color, -fx-cell-hover-color;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: -fx-text-inner-color;
+}
+ 
+.table-view:row-selection .table-row-cell:filled:focused:hover {
+    -fx-background-color: -fx-table-cell-border-color, -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0, 0 0 1 0, 1 1 2 1, 2 2 3 2, 3 3 4 3;
+    -fx-text-fill: -fx-text-inner-color;
+}*/
+
+/*.table-view:focused .table-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+     -fx-text-fill: -fx-selection-bar-text;  
+    -fx-text-fill: red;
+}
+
+ When the list-cell is selected and selected-hovered but not focused. 
+    Applied when the multiple items are selected but not focused 
+.table-view:focused .table-cell:filled:selected, .table-view:focused .table-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+     -fx-text-fill: -fx-selection-bar-text;  
+    -fx-text-fill: green;
+}
+
+ When the list-cell is selected, focused and mouse hovered 
+.table-view:focused .table-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+     -fx-text-fill: -fx-selection-bar-text;  
+    -fx-text-fill: yellow;
+}*/
+
+/*#company{
+-fx-background-color: white;
+-fx-text-fill: red;
+-fx-fill: -fx-text-background-color ;
+}
+
+#company:selected{
+    -fx-background-color: green;
+-fx-text-fill: red;
+-fx-fill: -fx-text-background-color ;
+}
+
+
+ Selected row 
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: brown;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+ Selected row when table not focused 
+.table-row-cell:filled:focused:selected {
+    -fx-background-color: red;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+ Row hovered 
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: green;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+ Selected row hovered 
+.table-view:focused .table-row-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: yellow;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+ Selected row hovered when table not focused 
+.table-view:row-selection .table-row-cell:filled:focused:hover {
+    -fx-background-color: blue;
+    -fx-background-insets: 0, 0 0 1 0, 1 1 2 1, 2 2 3 2, 3 3 4 3;
+    -fx-text-fill: -fx-text-inner-color;
+}*/
+
+
+/*#company{
+    -fx-text-fill: red;
+        
+    
+}
+
+#company .table-row-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: red;
+    -fx-text-fill: red;
+    -fx-fill: blue;
+    -fx-font-weight: bold;
+    
+    -fx-text-fill: -fx-selection-bar-text;
+}*/

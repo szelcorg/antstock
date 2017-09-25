@@ -41,7 +41,7 @@ public class MainFX extends Application {
 
     }
 
-    private FXMLLoader getLoader(String path) throws MalformedURLException {
+    public static FXMLLoader getLoader(String path) throws MalformedURLException {
         File f = new File(path);
         System.out.println("Absolute ["+f.getAbsolutePath()+"]");
 

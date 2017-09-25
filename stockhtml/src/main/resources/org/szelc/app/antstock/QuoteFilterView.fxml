@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+
+<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox spacing="6.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+         
+            <children>
+            <VBox prefHeight="200.0" prefWidth="359.0" spacing="10.0">
+               <children>
+                      <RadioButton fx:id = "myCompaniesRB" text="My companies" toggleGroup="$companyChoiceToggleGroup">
+                          <toggleGroup>
+                              <ToggleGroup fx:id="companyChoiceToggleGroup" />
+                          </toggleGroup>
+                      </RadioButton>
+                      <RadioButton fx:id="evaluteOrTransactionCompaniesRB" selected="true"   text="Evaluate and transactioned companies" toggleGroup="$companyChoiceToggleGroup" />
+                      <RadioButton fx:id="allCompaniesRB" lineSpacing="2.0" text="All companies" toggleGroup="$companyChoiceToggleGroup" />
+                      <FlowPane>
+                         <children>
+                             <RadioButton lineSpacing="2.0" text="Spółka"  toggleGroup="$companyChoiceToggleGroup" />
+                             <Label text="Company" GridPane.columnIndex="1" />
+                             <TextField fx:id="companyField" prefColumnCount="9" prefHeight="25.0" prefWidth="169.0" translateX="20.0" GridPane.columnIndex="1">
+                           <FlowPane.margin>
+                              <Insets />
+                           </FlowPane.margin>
+                        </TextField>
+                         </children> 
+                      </FlowPane>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+               
+                
+                
+                <Label text="Data" />
+                <DatePicker fx:id="date" promptText="dd.MM.yyyy" BorderPane.alignment="CENTER" />               
+               
+                <Button fx:id="filterTransactionBtn" text="Filtruj" GridPane.columnIndex="1" /> 
+            </children>
+            <padding>
+                <Insets bottom="6.0" left="6.0" right="5.0" top="5.0" />
+            </padding>
+     
+        </HBox>
+    </children>
+</fx:root>

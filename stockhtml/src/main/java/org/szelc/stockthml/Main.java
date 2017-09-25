@@ -3,7 +3,6 @@ package org.szelc.stockthml;
 import javafx.application.Application;
 import org.apache.log4j.Logger;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +15,6 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -69,7 +67,7 @@ public class Main extends Application {
             root = loader.load();
         }
         catch(Exception e){
-            File file = new File("./stockhtml.fxml");
+            File file = new File("javafx/stockhtml.fxml");
 
             loader = getLoader(file.getAbsolutePath());
             root = loader.load();

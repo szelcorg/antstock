@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.java.openjfx.backport:openjfx-78-backport:1.8.0-ea-b96.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.openjfx.backport/openjfx-78-backport/1.8.0-ea-b96.1/cb8170d5e9ecfa8c3355367a797aa60d6c6fbaca/openjfx-78-backport-1.8.0-ea-b96.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.openjfx.backport/openjfx-78-backport/1.8.0-ea-b96.1/5f056df3116ac97dc658faedd051ac79dc9013b/openjfx-78-backport-1.8.0-ea-b96.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

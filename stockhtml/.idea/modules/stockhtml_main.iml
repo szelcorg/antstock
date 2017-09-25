@@ -20,5 +20,8 @@
     </orderEntry>
     <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.10.3" level="project" />
     <orderEntry type="library" name="Gradle: log4j:log4j:1.2.16" level="project" />
+    <orderEntry type="library" name="Gradle: org.controlsfx:controlsfx:8.40.13" level="project" />
+    <orderEntry type="library" name="Gradle: net.java.openjfx.backport:openjfx-78-backport:1.8.0-ea-b96.1" level="project" />
+    <orderEntry type="library" name="Gradle: commons-net:commons-net:3.3" level="project" />
   </component>
 </module>

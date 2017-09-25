@@ -1,0 +1,13 @@
+#percentToBuy, #requiredPriceToBuy, #course, #requiredPriceToSell, #percentToSell, #priceToBookValue, #priceToEarning, #rating,
+#Zscore, #priceWhenEvaluatePEPBV, #dividendInZL, #sector, #change{
+    -fx-alignment: CENTER-RIGHT;
+}
+
+#company, #course{
+    -fx-font-weight: bold;
+
+}
+
+#rating{
+    -fx-alignment: CENTER;
+}

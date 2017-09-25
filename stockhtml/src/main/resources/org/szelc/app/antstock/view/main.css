@@ -1,0 +1,44 @@
+
+/* 
+    Created on : Feb 14, 2015, 9:43:29 AM
+    Author     : mszelc
+*/
+
+ #company .text{
+    -fx-text-fill: darkcyan;
+    -fx-fill: darkcyan ;    
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header .label .text{
+    -fx-text-fill: white !important;
+    -fx-fill: black !important;
+    -fx-border-width: 0, 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold !important;
+}
+
+.changeUp .text{
+    -fx-text-fill: green;
+    -fx-fill: green;
+}
+
+.changeDown .text{
+    -fx-text-fill: red;
+    -fx-fill: red;
+}
+
+.changeEq .text{
+    -fx-text-fill: blue;
+    -fx-fill: blue;
+}
+
+.changeNone .text{
+    -fx-text-fill: black;
+    -fx-fill: black;
+}
+
+.table-row-cell:selected .text {
+    -fx-text-fill: white !important;
+    -fx-fill: white !important;
+}

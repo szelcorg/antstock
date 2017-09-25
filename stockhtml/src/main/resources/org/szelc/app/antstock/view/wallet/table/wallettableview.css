@@ -1,0 +1,13 @@
+#numberOfShares, #avgPriceForShareStr, #numberOfShares, #actualPrice, #priceForActiveShare, #totalActualPrice, #moneyProfit,
+#percentProfit, #numberSharesFullTransaction, #avgPriceFullTransaction, #avgSellFullTransaction, 
+            #percentProfitFullTransaction, #moneyProfitFullTransaction, #evaluatePercentProfit, #evaluateMoneyProfit{
+    -fx-alignment: CENTER-RIGHT;
+}
+
+#totalActualPrice {
+    -fx-font-weight: bold;
+}
+
+#moneyProfit {
+    -fx-underline: true;
+}

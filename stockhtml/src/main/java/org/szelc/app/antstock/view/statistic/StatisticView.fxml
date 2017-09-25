@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.szelc.app.antstock.view.statistic.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.szelc.app.antstock.view.statistic.table.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" 
+            AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/8" fx:controller="org.szelc.app.antstock.view.statistic.StatisticViewController">
+   <children>
+   
+       <BorderPane prefHeight="700.0" prefWidth="1179.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+           
+           <center> 
+                <StatisticTableView fx:id="statisticView" BorderPane.alignment="CENTER" />
+           </center>
+         <top>
+             <FlowPane>
+                 <Label text="Data od1"/>
+                 <DatePicker BorderPane.alignment="CENTER" fx:id="dateFromDP" promptText="yyyy-MM-dd"   />               
+                 <Label text="Data do1"/>
+                 <DatePicker BorderPane.alignment="CENTER" fx:id="dateToDP"  promptText="yyyy-MM-dd"/>
+                 <Button text="Show" fx:id="showBtn"> </Button>
+             </FlowPane>
+         </top>
+         
+           
+        
+       </BorderPane>
+   </children>
+</AnchorPane>

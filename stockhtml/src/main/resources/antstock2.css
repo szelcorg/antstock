@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 24, 2015, 4:16:29 PM
+    Author     : mszelc
+*/
+
+.root { 
+    display: block;
+   -fx-background-color: lightsteelblue;
+}
+ 
+.fontStyle{
+    -fx-font-size: 25;
+    -fx-font-family: "Times New Roman";
+}
+.label{
+    -fx-text-fill: Black;
+}
+ 
+.hbox {
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+
+.borders{
+    -fx-border-color: yellow;
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-insets: -5;
+}

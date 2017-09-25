@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.szelc.app.antstock.view.quotes.table.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.szelc.app.antstock.view.quotes.QuotesViewController">
+    <stylesheets>
+        <URL value="@quotesview.css"/>
+    </stylesheets>
+
+    <children>
+
+        <BorderPane prefHeight="700.0" prefWidth="1179.0" AnchorPane.bottomAnchor="15.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+            <top>
+                <org.szelc.app.antstock.view.quotes.QuoteFilterView fx:id="quoteFilterView"/>
+            </top>
+            <center>
+                <QuotesTableView fx:id="quotesTableView" />
+            </center>
+
+        </BorderPane>
+    </children>
+</AnchorPane>

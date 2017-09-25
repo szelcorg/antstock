@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+
+
+<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <stylesheets>
+<!--        <URL value="@transactiontableview.css"/>
+        <URL value="@../../main.css"/>-->
+    </stylesheets>
+    
+    <children>
+     
+
+      <TableView fx:id="table" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0" xmlns:fx="http://javafx.com/fxml/1" id="transactionTable">
+         <columns>
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Order" id="order" >
+               <cellValueFactory>
+                  <PropertyValueFactory property="order" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="500.0" minWidth="100.0" prefWidth="-1.0" sortType="DESCENDING" text="Day"  id="day" fx:id="columnDay">
+               <cellValueFactory>
+                  <PropertyValueFactory property="dayStr" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="120.0" prefWidth="-1.0" text="Company" id="company" fx:id="columnCompany">
+               <cellValueFactory>
+                  <PropertyValueFactory property="companyName" />
+               </cellValueFactory>
+            </TableColumn>
+             <TableColumn minWidth="50.0" prefWidth="-1.0" text="Type" fx:id="columnType">
+               <cellValueFactory>
+                  <PropertyValueFactory property="transactionType" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="120.0" prefWidth="-1.0" text="Price share" id="priceForOne" fx:id="columnPriceForOne">
+               <cellValueFactory>
+                  <PropertyValueFactory property="priceOneShareStr" /> 
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Number" id="numberShares" fx:id="columnNumberShares">
+               <cellValueFactory>
+                  <PropertyValueFactory property="numberSharesStr" />
+               </cellValueFactory>
+            </TableColumn>      
+            <TableColumn minWidth="120.0" prefWidth="-1.0" text="Price shares" id="priceForAll" fx:id="columnPriceForAll">
+               <cellValueFactory>
+                  <PropertyValueFactory property="priceAllSharesStr" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="120.0" prefWidth="-1.0" text="Provision (%)" id="percentProvision" fx:id="columnPercentProvision">
+               <cellValueFactory>
+                  <PropertyValueFactory property="percentProvisionStr" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Provision" id="moneyProvision" fx:id="columnMoneyProvision">
+               <cellValueFactory>
+                  <PropertyValueFactory property="moneyProvisionStr" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="120.0" prefWidth="-1.0" text="Price total" id="priceTotal" fx:id="columnPriceTotal">
+               <cellValueFactory>
+                  <PropertyValueFactory property="priceTotalStr" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Bank" id="bank" fx:id="columnBank">
+               <cellValueFactory>
+                  <PropertyValueFactory property="bankName" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
+        </children>
+      
+</fx:root>

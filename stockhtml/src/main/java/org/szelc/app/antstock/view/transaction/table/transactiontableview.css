@@ -1,0 +1,11 @@
+#priceForOne, #numberShares, #priceForAll, #percentProvision, #moneyProvision, #priceTotal, #bank{
+    -fx-alignment: CENTER-RIGHT;
+  }  
+
+#day {
+    -fx-underline: true;
+}
+
+#priceTotal{
+    -fx-font-weight: bold;
+}
