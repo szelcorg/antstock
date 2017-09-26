@@ -9,6 +9,12 @@
 
     <tabs>
 
+        <Tab text="Excel">
+            <content>
+                <fx:include fx:id="excelView" source="view/excel/ExcelView.fxml"/>
+            </content>
+       </Tab>
+
         <Tab text="Messages">
             <content>
                 <fx:include fx:id="messagesView" source="StockMessages.fxml"/>

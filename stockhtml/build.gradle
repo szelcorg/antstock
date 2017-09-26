@@ -27,6 +27,12 @@ dependencies {
     compile group: 'net.java.openjfx.backport', name: 'openjfx-78-backport', version: '1.8.0-ea-b96.1'
 
     compile group: 'commons-net', name: 'commons-net', version: '3.3'
+
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    compile group: 'org.apache.poi', name: 'poi', version: '3.9'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.9'
+
 }
 
 
