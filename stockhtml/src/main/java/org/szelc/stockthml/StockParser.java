@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,21 +29,22 @@ public class StockParser {
 
     private static final Logger log = Logger.getLogger(StockParser.class);
 
-    public int displayQuotesGpwFromBankier(){
+    public static List<DayCompanyQuote>displayQuotesGpwFromBankier(){
         return displayQuotesFromBankier(URL_GPW_QUOTES_BANKIER);
     }
 
-    public int displayQuotesNewConnectFromBankier(){
+    public List<DayCompanyQuote> displayQuotesNewConnectFromBankier(){
         return displayQuotesFromBankier(URL_NEW_CONNECT_QUOTES_BANKIER);
     }
 
-    private int displayQuotesFromBankier(String address){
+    public static List<DayCompanyQuote> displayQuotesFromBankier(String address){
+        List<DayCompanyQuote> result = new ArrayList<>();
         Document doc = null;
         try {
             doc = Jsoup.parse(new URL(address), 10000);
         } catch (IOException e) {
             log.error("Can't loading page ["+address+"]");
-            return -1;
+            return result;
         }
         log.info("Start parsing page ["+address+"]");
         Elements table = doc.getElementsByClass("sortTable floatingHeaderTable");
@@ -56,13 +58,26 @@ public class StockParser {
             if(cols.get(0).select("a").isEmpty()){
                 continue;
             }
+
             String company = cols.get(0).select("a").get(0).html();
+            String courseStr = cols.get(1).html();
+            DayCompanyQuote dcq = new DayCompanyQuote();
+            dcq.setCompanyName(company);
+            Float course = -1f;
+            try{
+                course = Float.valueOf(courseStr.trim().replaceAll(" ","").replaceAll(",","."));
+            }
+            catch(NumberFormatException e){
+
+            }
+            dcq.setCourse(course);
+            result.add(dcq);
 
             if(!cols.isEmpty()) {
-                log.info(company);//+" : "+cols.get(1).html()+" : "+cols.get(2).html()+" : "+cols.get(3).html()+" : "+cols.get(4).html()+" : "+cols.get(5).html());
+                log.info(company+" "+courseStr);//+" : "+cols.get(1).html()+" : "+cols.get(2).html()+" : "+cols.get(3).html()+" : "+cols.get(4).html()+" : "+cols.get(5).html());
             }
         }
-        return rows.size();
+        return result;
     }
 
     private String getOnetMessage(int page){

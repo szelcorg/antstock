@@ -90,7 +90,7 @@ th="100.0" prefWidth="-1.0" text="requiredPriceToBuy">
                         <PropertyValueFactory property="requiredPriceToBuy" />
                     </cellValueFactory>
                 </TableColumn>-->
-         
+         <!--
                <TableColumn minWidth="100.0" prefWidth="-1.0" text="requiredPriceToSell">
                     <cellValueFactory>
                         <PropertyValueFactory property="requiredPriceToSell" />
@@ -131,6 +131,7 @@ th="100.0" prefWidth="-1.0" text="requiredPriceToBuy">
                         <PropertyValueFactory property="sector" />
                     </cellValueFactory>
                 </TableColumn>
+                -->
             </columns>
         </TableView>
     </children>

@@ -101,7 +101,10 @@ public class WebUIController implements Initializable {
                         webEngineBrokeralior.executeScript(enterUserName);
 
                         HTMLInputElement element2 = (HTMLInputElement) webEngineBrokeralior.executeScript("document.getElementsByName('zaloguj')[0]");
+
                         element2.click();
+
+
 
                         System.out.println("Element [" + element2 + "]");
                     }

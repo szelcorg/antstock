@@ -2,8 +2,13 @@ package org.szelc.stockthml;
 
 public class Main2 {
 
+    public Main2() {
+
+        StockParser.displayQuotesGpwFromBankier();
+    }
+
     public static void main(String args[]){
-        System.out.println("Started stockhtml2");
+        new Main2();
 
     }
 }

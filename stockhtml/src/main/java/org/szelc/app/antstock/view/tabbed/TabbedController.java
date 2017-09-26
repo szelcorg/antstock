@@ -1,5 +1,6 @@
 package org.szelc.app.antstock.view.tabbed;
 
+import org.szelc.app.antstock.StockEventController;
 import org.szelc.app.antstock.view.evaluate.EvaluateViewController;
 import org.szelc.app.antstock.view.quotes.QuotesViewController;
 import org.szelc.app.antstock.view.quotes.chart.QuotesChartViewController;
@@ -32,6 +33,10 @@ public class TabbedController implements Initializable {
     private WalletViewController walletViewController;
     @FXML
     private QuotesChartViewController quotesChartViewController;
+    @FXML
+    private StockEventController stockEventController;
+
+
 
     /**
      *
@@ -46,6 +51,7 @@ public class TabbedController implements Initializable {
         log.info("StockMainTabbedController subcontroller loaded successfully.");
 
         initalizeListener();
+        evaluateViewController.setTabbedController(this);
     }
 
     private boolean checkController() {
@@ -74,6 +80,9 @@ public class TabbedController implements Initializable {
             result = false;
         }
 
+
+
+
         return result;
     }
 
@@ -83,4 +92,8 @@ public class TabbedController implements Initializable {
         sysListener.setWalletViewController(walletViewController);
     }
 
+    public void addMessages(String s) {
+        System.out.println("Tabbed controleed ad "+s);
+        stockEventController.addMessages(s);
+    }
 }

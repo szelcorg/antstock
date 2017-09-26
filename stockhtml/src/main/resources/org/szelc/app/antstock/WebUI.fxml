@@ -41,6 +41,7 @@
               <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                       <children>
+                          <!--<fx:include fx:id="excelX" source="ThreadView.fxml"/>-->
                           <fx:include fx:id="stockMainTabbed" source="AntStock.fxml" />
                       </children>
                   </AnchorPane>

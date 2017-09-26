@@ -1,3 +1,4 @@
+/*
 package org.szelc.app.antstock.view.excel;
 
 import javafx.collections.FXCollections;
@@ -13,16 +14,19 @@ import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.controlsfx.control.spreadsheet.GridBase;
+*/
+/*import org.controlsfx.control.spreadsheet.GridBase;
 import org.controlsfx.control.spreadsheet.SpreadsheetCell;
 import org.controlsfx.control.spreadsheet.SpreadsheetCellType;
-import org.controlsfx.control.spreadsheet.SpreadsheetView;
+import org.controlsfx.control.spreadsheet.SpreadsheetView;*//*
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+*/
 /**
  * This class allows for the displaying of excel files within a window by
  * utilizing SpreadsheetView from controlsFX and the reading capabilities of     the POI library.
@@ -31,12 +35,15 @@ import java.util.ResourceBundle;
  *
  * @author Theo
  *
- */
+ *//*
+
 public class ExcelView implements Initializable {
 
-    /**
+    */
+/**
      * Path to Excel
-     */
+     *//*
+
     private String filePath;
 
     private int sheetIndex;
@@ -47,7 +54,7 @@ public class ExcelView implements Initializable {
     private XSSFWorkbook poiWorkbook;
     private XSSFSheet poiSheet;
 
-    private SpreadsheetView theView;
+    //private SpreadsheetView theView;
 
     @FXML
     private BorderPane excelViewBorder;
@@ -100,22 +107,26 @@ public class ExcelView implements Initializable {
         }
     }
 
-    /**
+    */
+/**
      * Updates the values in the view. This may happen after the Excel file has been
      * modified after the initial reading.
      * @throws Exception
-     */
+     *//*
+
     public void updateView() throws Exception{
         GridBase newgrid = excelToGrid();
 
         theView.setGrid(newgrid);
     }
 
-    /**
+    */
+/**
      * Creates a {@link GridBase} object from the excel file located at the path
      * @return
      * @throws Exception - when opening the file
-     */
+     *//*
+
     private GridBase excelToGrid() throws Exception{
 
         // Read the Excel document and collect the rows
@@ -152,11 +163,13 @@ public class ExcelView implements Initializable {
         return grid;
     }
 
-    /**
+    */
+/**
      * Calculates the number of rows and columns in the sheet by looping
      * and reading all the things :)
      * @return the size as int[{rows, cols}]
-     */
+     *//*
+
     private int[] getSize(){
 
         int numRows = 0;
@@ -257,4 +270,4 @@ public class ExcelView implements Initializable {
             e.printStackTrace();
         }
     }
-}
+}*/
