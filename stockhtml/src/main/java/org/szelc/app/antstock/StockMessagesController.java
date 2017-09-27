@@ -6,12 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.apache.log4j.Logger;
+import org.szelc.app.antstock.view.admin.AdminViewController;
 import org.szelc.stockthml.MessageLoader;
 
 import java.net.URL;
@@ -23,11 +26,20 @@ import java.util.ResourceBundle;
  */
 public class StockMessagesController implements Initializable {
 
+    private static final Logger LOG = Logger.getLogger(StockMessagesController.class.toString());
+
     @FXML
     WebView webViewMessages;
     private WebEngine webEngine;
 
+    @FXML
+    private Button refreshMessages;
 
+    @FXML
+    private void refreshMessagesEvent(ActionEvent e){
+        LOG.info("refreshMessages ");
+        refreshMessages();
+    }
 
     @FXML
     private ListView messageListView;
@@ -35,11 +47,11 @@ public class StockMessagesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         webEngine = webViewMessages.getEngine();
-        webEngine.load("http://google.pl");
+    }
+
+    public void refreshMessages(){
         List<String> msgList = MessageLoader.loadMessageForCompanies();
-        for(int i=0;i<100;i++){
-            msgList.add("http://abc"+i+".pl");
-        }
+
         Hyperlink[] hpls = new Hyperlink[msgList.size()];
         int i=0;
         for(String msg : msgList){

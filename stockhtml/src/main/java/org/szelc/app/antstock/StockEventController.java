@@ -24,7 +24,6 @@ public class StockEventController implements Initializable {
             System.out.println("textArea is not null");
             textArea.appendText(msg);
         }
-        for(int i=0;i<100;i++)
-        textArea.appendText(""+i+"\n");
+
     }
 }

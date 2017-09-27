@@ -1,6 +1,8 @@
 package org.szelc.stockthml;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import org.apache.log4j.Logger;
 
 import javafx.fxml.FXMLLoader;
@@ -22,6 +24,7 @@ import java.util.List;
 public class MessageLoader extends Application {
 
     Logger log = Logger.getLogger(MessageLoader.class);
+
 
 
     //0 - evaluate
@@ -46,12 +49,12 @@ public class MessageLoader extends Application {
         StockParser stockParser = new StockParser();
         //stockParser.displayDividendBossa();
 
-        boolean onlyToday = true;
+        boolean onlyToday = false;
         //type
         //0 - evaluate
         //1 - portfel
         //2 - transactioned
-        List<String> result= stockParser.displayMultiplePageMesssageOnet(1, onlyToday, getCompanyList(0));
+        List<String> result= stockParser.displayMultiplePageMesssageOnet(6, onlyToday, getCompanyList(0));
         //log.info("Readed number of message ["+countMessage+"]");
 
         //int count = stockParser.displayQuotesNewConnectFromBankier();

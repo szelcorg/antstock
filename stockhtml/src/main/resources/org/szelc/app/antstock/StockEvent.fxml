@@ -12,6 +12,7 @@
     <BorderPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                 AnchorPane.topAnchor="0">
 
+
     <center>
             <TextArea fx:id="textArea" prefWidth="Infinity" prefHeight="Infinity"  AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" />
     </center>

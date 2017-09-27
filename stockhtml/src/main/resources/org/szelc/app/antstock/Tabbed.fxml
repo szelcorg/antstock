@@ -18,7 +18,7 @@
             </content>
        </Tab>
 -->
-        <!--
+
         <Tab text="Page">
             <content>
                 <fx:include source="Pages.fxml"></fx:include>
@@ -36,7 +36,7 @@
             </content>
 
         </Tab>
-  -->
+
         <Tab text="Quotes">
             <content>
                 <fx:include fx:id="quotesView" source="QuotesView.fxml" />

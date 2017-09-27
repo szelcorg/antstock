@@ -33,7 +33,8 @@ public class AdminViewController implements Initializable{
     }
 
     @FXML
-    private void repairCompanyFilesEvent(ActionEvent e){
+    private void
+    repairCompanyFilesEvent(ActionEvent e){
         log.info("repairCompanyFilesEvent event ["+e+"]");
         CompanyServiceFactory.instance().getCompanyService().saveCompanies(
                 EvaluateServiceFactory.instance().getEvaluateService().getEvaluateRepository().getCompaniesSet(),

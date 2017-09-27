@@ -11,8 +11,12 @@
     <children>
        <BorderPane prefHeight="371.0" prefWidth="431.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
+
              <ListView layoutX="79.0" layoutY="45.0" prefHeight="400.0" prefWidth="1000.0" fx:id="messageListView" />
             </top>
+           <left>
+               <Button fx:id="refreshMessages" onAction="#refreshMessagesEvent" text="ref"/>
+           </left>
            <center>
                <WebView fx:id="webViewMessages" prefHeight="400.0" prefWidth="900.0"/>
            </center>
