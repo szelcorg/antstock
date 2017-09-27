@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+
+
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -15,6 +18,13 @@
             </content>
        </Tab>
 -->
+        <!--
+        <Tab text="Page">
+            <content>
+                <fx:include source="Pages.fxml"></fx:include>
+            </content>
+        </Tab>
+
         <Tab text="StockEvent">
             <content>
                 <fx:include fx:id="stockEvent" source="StockEvent.fxml"/>
@@ -26,7 +36,7 @@
             </content>
 
         </Tab>
-
+  -->
         <Tab text="Quotes">
             <content>
                 <fx:include fx:id="quotesView" source="QuotesView.fxml" />
@@ -83,5 +93,7 @@
                 <fx:include fx:id="chartView" source="/org/szelc/app/antstock/view/chart/ChartView.fxml" />
             </content>
         </Tab>
+
+
 </tabs>
 </TabPane>

@@ -14,20 +14,25 @@
             AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/8" fx:controller="org.szelc.app.antstock.view.statistic.StatisticViewController">
    <children>
    
-       <BorderPane prefHeight="700.0" prefWidth="1179.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
-           
-           <center> 
+       <BorderPane prefHeight="700.0" prefWidth="1179.0" AnchorPane.bottomAnchor="15.0"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0"
+       >
+
+           <top>
+               <FlowPane>
+                   <Label text="Data od"/>
+                   <DatePicker BorderPane.alignment="CENTER" fx:id="dateFromDP" promptText="yyyy-MM-dd"   />
+                   <Label text="Data do"/>
+                   <Label text=" . "/>
+                   <DatePicker BorderPane.alignment="CENTER" fx:id="dateToDP"  promptText="yyyy-MM-dd"/>
+                   <Button text="Show" fx:id="showBtn"> </Button>
+               </FlowPane>
+           </top>
+
+           <center>
                 <StatisticTableView fx:id="statisticView" BorderPane.alignment="CENTER" />
            </center>
-         <top>
-             <FlowPane>
-                 <Label text="Data od1"/>
-                 <DatePicker BorderPane.alignment="CENTER" fx:id="dateFromDP" promptText="yyyy-MM-dd"   />               
-                 <Label text="Data do1"/>
-                 <DatePicker BorderPane.alignment="CENTER" fx:id="dateToDP"  promptText="yyyy-MM-dd"/>
-                 <Button text="Show" fx:id="showBtn"> </Button>
-             </FlowPane>
-         </top>
+
          
            
         

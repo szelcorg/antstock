@@ -1,168 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.collections.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    
+<fx:root styleClass="glass-pane" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
     <stylesheets>
-        <URL value="@../../main.css"/>
-        <URL value="@evaluatetableview.css"/>
+        <URL value="@../../main.css" />
+        <URL value="@evaluatetableview.css" />
     </stylesheets>
-    
-    <children>
-        <TableView fx:id="table" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" 
-                   xmlns:fx="http://javafx.com/fxml/1">
+
+<children>
+        <TableView fx:id="table" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" xmlns:fx="http://javafx.com/fxml/1">
             <columns>
 
 
-                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Order" id="order" >
+                <TableColumn id="order" minWidth="100.0" prefWidth="-1.0" text="Order">
                     <cellValueFactory>
                         <PropertyValueFactory property="order" />
                     </cellValueFactory>
                 </TableColumn>
 
 
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Company" id="company" fx:id="columnCompany">
+                <TableColumn id="company" fx:id="columnCompany" minWidth="90.0" prefWidth="-1.0" text="Company">
                     <cellValueFactory>
                         <PropertyValueFactory property="companyName" />
                     </cellValueFactory>
                 </TableColumn>
-                
-                <TableColumn minWidth="100.0" prefWidth="-1.0" text="To buy (%)" id="percentToBuy" fx:id="columnPercentToBuy">
+
+                <TableColumn id="percentToBuy" fx:id="columnPercentToBuy" minWidth="100.0" prefWidth="-1.0" text="To buy (%)">
                     <cellValueFactory>
                         <PropertyValueFactory property="percentToBuyStr" />
                     </cellValueFactory>
                 </TableColumn>
-               
-                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Price to buy" id="requiredPriceToBuy" fx:id="columnRequiredPriceToBuy">
+
+                <TableColumn id="requiredPriceToBuy" fx:id="columnRequiredPriceToBuy" minWidth="100.0" prefWidth="-1.0" text="Price to buy">
                     <cellValueFactory>
                         <PropertyValueFactory property="requiredPriceToBuyStr" />
                     </cellValueFactory>
                 </TableColumn>
-         
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Course" id="course" fx:id="columnCourse">
+
+                <TableColumn id="course" fx:id="columnCourse" minWidth="90.0" prefWidth="-1.0" text="Course">
                     <cellValueFactory>
                         <PropertyValueFactory property="courseStr" />
                     </cellValueFactory>
                 </TableColumn>
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Change (%)" id="change" fx:id="columnChange">
+
+                <TableColumn id="change" fx:id="columnChange" minWidth="90.0" prefWidth="-1.0" text="Change (%)">
                     <cellValueFactory>
                         <PropertyValueFactory property="changeCourseStr" />
                     </cellValueFactory>
                 </TableColumn>
-                
-                <TableColumn minWidth="100.0" prefWidth="-1.0" text="Price to sell" id="requiredPriceToSell" fx:id="columnRequiredPriceToSell" >
+
+                <TableColumn id="requiredPriceToSell" fx:id="columnRequiredPriceToSell" minWidth="100.0" prefWidth="-1.0" text="Price to sell">
                     <cellValueFactory>
                         <PropertyValueFactory property="requiredPriceToSellStr" />
                     </cellValueFactory>
-                </TableColumn>     
-                
-                <TableColumn minWidth="110.0" prefWidth="-1.0" text="To sell (%)" id="percentToSell" fx:id="columnPercentToSell">
+                </TableColumn>
+
+                <TableColumn id="percentToSell" fx:id="columnPercentToSell" minWidth="110.0" prefWidth="-1.0" text="To sell (%)">
                     <cellValueFactory>
                         <PropertyValueFactory property="percentToSellStr" />
                     </cellValueFactory>
-                </TableColumn>     
-               
-                <TableColumn minWidth="70.0" prefWidth="-1.0" text="P/BV" id="priceToBookValue" fx:id="columnPriceToBookValue">
+                </TableColumn>
+
+                <TableColumn id="priceToBookValue" fx:id="columnPriceToBookValue" minWidth="70.0" prefWidth="-1.0" text="P/BV">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceToBookValueStr" />
                     </cellValueFactory>
-                </TableColumn>    
-                <TableColumn minWidth="70.0" prefWidth="-1.0" text="P/E" id="priceToEarning" fx:id="columnPriceToEarning">
+                </TableColumn>
+                <TableColumn id="priceToEarning" fx:id="columnPriceToEarning" minWidth="70.0" prefWidth="-1.0" text="P/E">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceToEarningStr" />
                     </cellValueFactory>
-                </TableColumn>      
-                <TableColumn minWidth="60.0" prefWidth="-1.0" text="Rating" id="rating" fx:id="columnRating">
+                </TableColumn>
+                <TableColumn id="rating" fx:id="columnRating" minWidth="60.0" prefWidth="-1.0" text="Rating">
                     <cellValueFactory>
                         <PropertyValueFactory property="rating" />
                     </cellValueFactory>
-                </TableColumn>  
-                <TableColumn minWidth="70.0" prefWidth="-1.0" text="Zscore" id="Zscore" fx:id="columnZScore">
+                </TableColumn>
+                <TableColumn id="Zscore" fx:id="columnZScore" minWidth="70.0" prefWidth="-1.0" text="Zscore">
                     <cellValueFactory>
                         <PropertyValueFactory property="zscoreStr" />
                     </cellValueFactory>
-                </TableColumn>       
-                <TableColumn minWidth="120.0" prefWidth="-1.0" text="Price evaluate" id="priceWhenEvaluatePEPBV" fx:id="columnPriceWhenEvaluatePEPBV">
+                </TableColumn>
+                <TableColumn id="priceWhenEvaluatePEPBV" fx:id="columnPriceWhenEvaluatePEPBV" minWidth="120.0" prefWidth="-1.0" text="Price evaluate">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceWhenEvaluatePEPBVStr" />
                     </cellValueFactory>
-                </TableColumn> 
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Dividend (zł)" id="dividendInZL" fx:id="columnDividendMoney">
+                </TableColumn>
+                <TableColumn id="dividendInZL" fx:id="columnDividendMoney" minWidth="90.0" prefWidth="-1.0" text="Dividend (zł)">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendInZLStr" />
                     </cellValueFactory>
-                </TableColumn> 
-                 <TableColumn minWidth="90.0" prefWidth="-1.0" text="Dividend (%)" id="dividendPercent" fx:id="columnDividendPercent">
+                </TableColumn>
+                 <TableColumn id="dividendPercent" fx:id="columnDividendPercent" minWidth="90.0" prefWidth="-1.0" text="Dividend (%)">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendPercentStr" />
                     </cellValueFactory>
-                </TableColumn> 
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Dividend day" id="dividendDay" fx:id="columnDividendDay" >
+                </TableColumn>
+                <TableColumn id="dividendDay" fx:id="columnDividendDay" minWidth="90.0" prefWidth="-1.0" text="Dividend day">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendDay" />
                     </cellValueFactory>
-                </TableColumn> 
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Dividend payment" id="dividendPaymentDay" fx:id="columnDividendPaymentDay" >
+                </TableColumn>
+                <TableColumn id="dividendPaymentDay" fx:id="columnDividendPaymentDay" minWidth="90.0" prefWidth="-1.0" text="Dividend payment">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendPaymentDay" />
                     </cellValueFactory>
-                </TableColumn> 
-                
-               
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Next update buy/sell" id="dateNextUpdateBuySell" fx:id="columnDateNextUpdateBuySell" >
+                </TableColumn>
+
+
+
+                <TableColumn id="dateNextUpdateBuySell" fx:id="columnDateNextUpdateBuySell" minWidth="90.0" prefWidth="-1.0" text="Next update buy/sell">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateNextUpdateBuySell" />
                     </cellValueFactory>
-                </TableColumn> 
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Earliest buy/sell" id="dateEarliestBuySell" fx:id="columnDateEarliestBuySell" >
+                </TableColumn>
+
+                <TableColumn id="dateEarliestBuySell" fx:id="columnDateEarliestBuySell" minWidth="90.0" prefWidth="-1.0" text="Earliest buy/sell">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateEarliestBuySell" />
                     </cellValueFactory>
-                </TableColumn> 
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Latest buy/sell" id="dateLatestBuySell" fx:id="columnDateLatestBuySell" >
+                </TableColumn>
+
+                <TableColumn id="dateLatestBuySell" fx:id="columnDateLatestBuySell" minWidth="90.0" prefWidth="-1.0" text="Latest buy/sell">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateLatestBuySell" />
                     </cellValueFactory>
-                </TableColumn> 
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Date buy/sell" id="dateBuySell" >
+                </TableColumn>
+
+                <TableColumn id="dateBuySell" minWidth="90.0" prefWidth="-1.0" text="Date buy/sell">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateChangeBuySell" />
                     </cellValueFactory>
-                </TableColumn> 
-                
-                <TableColumn minWidth="90.0" prefWidth="-1.0" text="Date pointer" id="datePointer" >
+                </TableColumn>
+
+                <TableColumn id="datePointer" minWidth="90.0" prefWidth="-1.0" text="Date pointer">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateChangePointer" />
                     </cellValueFactory>
-                </TableColumn> 
-                <TableColumn minWidth="180.0" prefWidth="-1.0" text="Sector" id="sector" fx:id="columnSector">
+                </TableColumn>
+                <TableColumn id="sector" fx:id="columnSector" minWidth="180.0" prefWidth="-1.0" text="Sector">
                     <cellValueFactory>
                         <PropertyValueFactory property="sector" />
                     </cellValueFactory>
-                </TableColumn> 
+                </TableColumn>
             </columns>
         </TableView>
-    </children>
-       
-</fx:root>
+</children>
 
-   
+</fx:root>

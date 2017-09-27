@@ -4,13 +4,18 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.szelc.app.antstock.StockEventController">
+<?import javafx.scene.layout.BorderPane?>
+<AnchorPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.szelc.app.antstock.StockEventController"
+>
    <children>
+    <BorderPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0">
 
-      <ScrollPane prefHeight="1000.0" prefWidth="1000.0">
-        <content>
-            <TextArea fx:id="textArea" prefHeight="1000.0" prefWidth="1000.0" />
-        </content>
-      </ScrollPane>
+    <center>
+            <TextArea fx:id="textArea" prefWidth="Infinity" prefHeight="Infinity"  AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" />
+    </center>
+    </BorderPane>
+
    </children>
 </AnchorPane>

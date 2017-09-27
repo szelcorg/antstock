@@ -51,7 +51,9 @@ public class TabbedController implements Initializable {
         log.info("StockMainTabbedController subcontroller loaded successfully.");
 
         initalizeListener();
-        evaluateViewController.setTabbedController(this);
+        if(evaluateViewController!=null) {
+            evaluateViewController.setTabbedController(this);
+        }
     }
 
     private boolean checkController() {

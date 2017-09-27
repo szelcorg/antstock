@@ -68,14 +68,24 @@ public class WebUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        webEngineCustom = webViewCustom.getEngine();
-/**
-        webEngineAliorbank = webViewAliorbank.getEngine();
-        webEngineAliorbank.load("http://aliorbank.pl");
- */
+        if(webViewCustom!=null) {
+            webEngineCustom = webViewCustom.getEngine();
+        }
 
-        webEngineBrokeralior = webViewBrokeralior.getEngine();
-        webEngineBrokeralior.load("https://broker.aliorbank.pl/narzedzia/profil-spolki/");
+        if(webViewAliorbank!=null) {
+            webEngineAliorbank = webViewAliorbank.getEngine();
+            webEngineAliorbank.load("http://aliorbank.pl");
+        }
+
+        if(webViewBossa!=null) {
+            webEngineBossa = webViewBossa.getEngine();
+            webEngineBossa.load("http://bossa.pl");
+        }
+
+        if(webViewBrokeralior!=null) {
+            webEngineBrokeralior = webViewBrokeralior.getEngine();
+            webEngineBrokeralior.load("https://broker.aliorbank.pl/narzedzia/profil-spolki/");
+        }
 
 
         String username;
@@ -94,7 +104,8 @@ public class WebUIController implements Initializable {
         String enterPw = "document.getElementsByName('haslo')[0].value='" + password + "';";
         String enterUserName = "document.getElementById('login').value='" + username + "';";
 
-        webEngineBrokeralior.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
+        if(webEngineBrokeralior!=null) {
+            webEngineBrokeralior.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
                 if (newState == Worker.State.SUCCEEDED) {
                     try {
                         webEngineBrokeralior.executeScript(enterPw);
@@ -105,15 +116,15 @@ public class WebUIController implements Initializable {
                         element2.click();
 
 
-
                         System.out.println("Element [" + element2 + "]");
-                    }
-                    catch(netscape.javascript.JSException e){
+                    } catch (netscape.javascript.JSException e) {
 
                     }
                 }
             });
+        }
 
-        txtURL.setText("http://www.google.com");
+        if(txtURL!=null)
+            txtURL.setText("http://www.google.com");
     }
 }

@@ -37,6 +37,9 @@ public class StockMessagesController implements Initializable {
         webEngine = webViewMessages.getEngine();
         webEngine.load("http://google.pl");
         List<String> msgList = MessageLoader.loadMessageForCompanies();
+        for(int i=0;i<100;i++){
+            msgList.add("http://abc"+i+".pl");
+        }
         Hyperlink[] hpls = new Hyperlink[msgList.size()];
         int i=0;
         for(String msg : msgList){
