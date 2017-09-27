@@ -1,0 +1,5 @@
+StockMessages - nie wyœwietlaæ okna jeœli brak spe³nionych kryteriów.
+
+Pages - historia przegl¹dania, otwarcie w nowym oknie.
+
+Pobieranie plików - przenieœæ z testu.
