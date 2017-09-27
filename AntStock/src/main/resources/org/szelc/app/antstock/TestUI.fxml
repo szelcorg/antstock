@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<?import javafx.scene.web.WebView?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" styleClass="background"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="org.szelc.app.antstock.app.TestUIController">
+    <children>
+
+        <BorderPane prefHeight="371.0" prefWidth="431.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox prefHeight="27.0" prefWidth="431.0">
+                    <children>
+                        <TextField fx:id="txtURL" onAction="#goAction" prefHeight="27.0" prefWidth="382.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#goAction" prefHeight="27.0" prefWidth="47.0" text="GO" wrapText="false" HBox.hgrow="NEVER" />
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <WebView fx:id="webView" prefHeight="800.0" prefWidth="900.0"/>
+            </center>
+        </BorderPane>
+
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AntStock.iml" filepath="$PROJECT_DIR$/.idea/modules/AntStock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AntStock_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AntStock_main.iml" group="AntStock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AntStock_package.iml" filepath="$PROJECT_DIR$/.idea/modules/AntStock_package.iml" group="AntStock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AntStock_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AntStock_test.iml" group="AntStock" />
+    </modules>
+  </component>
+</project>
