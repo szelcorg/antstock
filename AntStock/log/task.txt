@@ -1,5 +1,11 @@
-StockMessages - nie wyœwietlaæ okna jeœli brak spe³nionych kryteriów.
+events - nie wyœwietlaæ okna jeœli brak spe³nionych kryteriów.
+
+Wiadomosci Dodaæ wyœwietlanie daty.
 
 Pages - historia przegl¹dania, otwarcie w nowym oknie.
 
 Pobieranie plików - przenieœæ z testu.
+
+Przy ³adowaniu sprawdzenie plików z ftp - jeœli nowsza wersja to poci¹gn¹æ i dopiero start aplikacji,
+jeœli brak po³¹czenia z ftp to wyswietlenie stosownego komunikatu.
+
