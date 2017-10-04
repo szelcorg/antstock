@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.szelc.app.antstock.data.messages.CompanyMessagesList;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
 
 import java.io.IOException;
@@ -84,17 +85,17 @@ public class StockParser {
         return "http://biznes.onet.pl/gielda/komunikaty-espi-ebi/"+page+",komunikaty-spolek.html";
     }
 
-    public List<String> displayMultiplePageMesssageOnet(int numberOfPages, boolean onlyToday, List companyFilters){
-        List<String> result = new LinkedList<>();
+    public CompanyMessagesList displayMultiplePageMesssageOnet(int numberOfPages, boolean onlyToday, List companyFilters){
+        CompanyMessagesList result = new CompanyMessagesList();
         for(int i=1; i<=numberOfPages;i++){
-            result.addAll(displayMessageOnet(i, onlyToday, companyFilters));
+            result.addAll(displayMessageOnet(i, onlyToday, companyFilters).getMessageList());
         }
         return result;
     }
 
-    public List<String> displayMessageOnet(int numberPage, boolean onlyToday, List companyFilters){
+    public CompanyMessagesList displayMessageOnet(int numberPage, boolean onlyToday, List companyFilters){
         log.info("Parsing page ["+numberPage+"]");
-        List<String> result = new ArrayList();
+        CompanyMessagesList result = new CompanyMessagesList();
         Document doc = null;
         URL_MESSAGE_ONET = getOnetMessage(numberPage);
         try {
@@ -131,7 +132,7 @@ public class StockParser {
                 log.info(datetime+" : "+company+" : "+cols.get(2).select("a").html());
                 String href = cols.get(2).select("a").attr("href");
                 log.info("http://biznes.onet.pl"+href+"\n");
-                result.add("http://biznes.onet.pl"+href);
+                result.addMessage(company, datetime,"http://biznes.onet.pl"+href);
             }
         }
 

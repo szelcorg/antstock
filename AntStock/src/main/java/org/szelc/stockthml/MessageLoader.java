@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.szelc.app.antstock.data.messages.CompanyMessagesList;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class MessageLoader extends Application {
 
     }
 
-    public static List<String> loadMessageForCompanies(){
+    public static CompanyMessagesList loadMessageForCompanies(){
         StockParser stockParser = new StockParser();
         //stockParser.displayDividendBossa();
 
@@ -54,7 +55,7 @@ public class MessageLoader extends Application {
         //0 - evaluate
         //1 - portfel
         //2 - transactioned
-        List<String> result= stockParser.displayMultiplePageMesssageOnet(6, onlyToday, getCompanyList(0));
+        CompanyMessagesList result= stockParser.displayMultiplePageMesssageOnet(6, onlyToday, getCompanyList(0));
         //log.info("Readed number of message ["+countMessage+"]");
 
         //int count = stockParser.displayQuotesNewConnectFromBankier();
