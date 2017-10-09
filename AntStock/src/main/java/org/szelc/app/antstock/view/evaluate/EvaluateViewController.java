@@ -16,10 +16,7 @@ import org.szelc.app.antstock.view.table.event.TableUpdateEvent;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,11 +125,46 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
         return autoSortAfterModifyCheck.isSelected();
     }
 
+    List<DayCompanyQuote> lastMessages = new ArrayList<>();
+
+    public boolean equals(List<DayCompanyQuote> listA, List<DayCompanyQuote> listB ){
+        if(listA.size()!=listB.size()){
+            return false;
+        }
+        for(DayCompanyQuote a : listA){
+            boolean exist = false;
+            for(DayCompanyQuote b : listB){
+                if(b.getCompanyName().equals(a.getCompanyName())){
+                    exist = true;
+                    break;
+                }
+            }
+            if(!exist){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
     public void startEvaluate(){
         System.out.println("***start task evaluate ***");
         StringBuilder buySb= new StringBuilder();
         StringBuilder sellSb= new StringBuilder();
         List<DayCompanyQuote> currentQuoteList = StockParser.displayQuotesGpwFromBankier();
+
+        if(currentQuoteList==null || currentQuoteList.size()==0){
+            System.out.println("***Komunikaty puste ***");
+            return;
+        }
+
+        Collections.sort(currentQuoteList, (a, b)-> a.getCompanyName().compareTo(b.getCompanyName()));
+        if(equals(currentQuoteList, lastMessages)){
+            System.out.println("***List z komunikatami są tożsame ***");
+            return;
+        }
+        lastMessages = currentQuoteList;
+
         for(DayCompanyQuote dcqCurrent : currentQuoteList){
             if(dcqCurrent.getCourse()==-1.0f){
                 continue;
@@ -157,11 +189,7 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
             }
         }
         Platform.runLater(() -> {
-            /**
-            if(alert.isShowing()){
-                 alert.close();
-            }
-             */
+
             alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("ShowAndWait");
 
