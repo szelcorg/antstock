@@ -32,6 +32,7 @@ import org.controlsfx.control.textfield.TextFields;
  */
 public class TransactionCreatorView extends AnchorPane {
 
+    private static final String DEFAULT_BANK = BankEnum.Alior.toString();
     private static final Logger log = Logger.getLogger(TransactionTableView.class.toString());
 
     private final static SimpleDateFormat dateFormatFromYear = new SimpleDateFormat("yyyy-MM-dd");
@@ -121,7 +122,7 @@ public class TransactionCreatorView extends AnchorPane {
     }
 
     public void setItems(ObservableList<BankEnum> bankList) {
-        bankField.setText("DB");
+        bankField.setText(DEFAULT_BANK);
         TextFields.bindAutoCompletion(bankField, bankList);
     }
 

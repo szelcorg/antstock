@@ -1,7 +1,7 @@
 package org.szelc.app.antstock.data.evaluate;
 
 import java.util.List;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.szelc.app.antstock.data.enumeration.RatingEnum;
 import org.szelc.app.antstock.data.enumeration.SectorEnum;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
@@ -310,10 +310,7 @@ public class Evaluate {
 
     public CSVRecord getCSVRecord(String delimiter) {
         CSVRecord rec = new CSVRecord();
-        Logger log = Logger.getLogger("x");
-       
-        log.info("P2B "+requiredPriceToBuy);
-        log.info("P2S "+requiredPriceToSell);
+
         rec.addField(companyName);
         rec.addField(requiredPriceToBuy);
         rec.addField(requiredPriceToSell);
