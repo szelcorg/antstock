@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.apache.log4j.Logger;
+import org.szelc.app.antstock.data.messages.CompanyMessagesList;
 import org.szelc.app.antstock.view.admin.AdminViewController;
 import org.szelc.stockthml.MessageLoader;
 
@@ -50,16 +51,15 @@ public class StockMessagesController implements Initializable {
     }
 
     public void refreshMessages(){
-        List<String> msgList = MessageLoader.loadMessageForCompanies();
+        CompanyMessagesList msgList = MessageLoader.loadMessageForCompanies();
 
-        Hyperlink[] hpls = new Hyperlink[msgList.size()];
+        Hyperlink[] hpls = new Hyperlink[msgList.getMessageList().size()];
         int i=0;
-        for(String msg : msgList){
-            Hyperlink hpl = hpls[i] = new Hyperlink(msg);
-            String url = msg;
-            // process event
-            hpl.setOnAction(new EventHandler<ActionEvent>() {
+        for(CompanyMessagesList.Message msg : msgList.getMessageList()){
+            Hyperlink hpl = hpls[i] = new Hyperlink(msg.getDate()+ " "+msg.getCompany()+" "+msg.getLink());
+            String url = msg.getLink();
 
+            hpl.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
                     System.out.println("Click link");

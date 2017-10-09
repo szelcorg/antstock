@@ -1,6 +1,7 @@
 
 package org.szelc.app.antstock.view.transaction.creator;
 
+import javafx.scene.control.Alert;
 import org.szelc.app.antstock.loader.transaction.TransactionUtil;
 import org.szelc.app.antstock.data.enumeration.BankEnum;
 import org.szelc.app.antstock.data.Transaction;
@@ -89,7 +90,17 @@ public class TransactionCreatorView extends AnchorPane {
         Date transactionDate;
         String companyName = companyField.getText();
         TransactionType transactionType = TransactionType.valueOf(String.valueOf(transactionTypeCombo.getSelectionModel().getSelectedItem()));
-        int numberShares = Integer.valueOf(numberSharesField.getText());
+        int numberShares;
+        try {
+            numberShares = Integer.valueOf(numberSharesField.getText());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Zły format liczby akcji");
+            alert.setContentText("Popraw liczbę akcji transakcji i zapisz ponownie");
+            alert.showAndWait();
+        }
+        catch(NumberFormatException e){
+            return null;
+        }
 
         float priceForOneShare = Float.valueOf(priceForOneShareField.getText().replace(",", "."));
         float priceForShares = numberShares * priceForOneShare;
