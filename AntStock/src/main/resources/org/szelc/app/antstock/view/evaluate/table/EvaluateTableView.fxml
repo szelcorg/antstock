@@ -145,6 +145,11 @@
                         <PropertyValueFactory property="dateChangePointer" />
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn id="sector" fx:id="columnMarket" minWidth="180.0" prefWidth="-1.0" text="Market">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="market" />
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn id="sector" fx:id="columnSector" minWidth="180.0" prefWidth="-1.0" text="Sector">
                     <cellValueFactory>
                         <PropertyValueFactory property="sector" />

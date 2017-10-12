@@ -1,6 +1,8 @@
 package org.szelc.app.antstock.view.evaluate.table.cell;
 
 import java.util.Date;
+
+import org.szelc.app.antstock.data.enumeration.MarketEnum;
 import org.szelc.app.antstock.data.enumeration.RatingEnum;
 import org.szelc.app.antstock.data.evaluate.Evaluate;
 import org.szelc.app.antstock.view.table.TableInterface;
@@ -55,7 +57,11 @@ public class EvaluateTableEditingCell extends EditingCell<Evaluate, String> {
             selEval.setDividendInZL(Float.valueOf(newValue));
         } else if (column == t.getColumnSector()) {
             selEval.setSector(SectorEnum.valueOf(textField.getText()));
-        } else if (column == t.getColumnDateEarliestBuySell()) {
+        }
+        else if (column == t.getColumnMarket()) {
+            selEval.setMarket(MarketEnum.valueOf(textField.getText()));
+        }
+        else if (column == t.getColumnDateEarliestBuySell()) {
             selEval.setDateEarliestBuySell(newValue);
         } else if (column == t.getColumnDateLatestBuySell()) {
             selEval.setDateLatestBuySell(newValue);

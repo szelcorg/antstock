@@ -93,12 +93,12 @@ public class TransactionCreatorView extends AnchorPane {
         int numberShares;
         try {
             numberShares = Integer.valueOf(numberSharesField.getText());
+        }
+        catch(NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Zły format liczby akcji");
             alert.setContentText("Popraw liczbę akcji transakcji i zapisz ponownie");
             alert.showAndWait();
-        }
-        catch(NumberFormatException e){
             return null;
         }
 
