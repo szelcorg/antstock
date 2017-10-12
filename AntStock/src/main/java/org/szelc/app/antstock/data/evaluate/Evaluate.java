@@ -1,7 +1,8 @@
 package org.szelc.app.antstock.data.evaluate;
 
 import java.util.List;
-//import org.apache.log4j.Logger;
+
+import org.szelc.app.antstock.data.enumeration.MarketEnum;
 import org.szelc.app.antstock.data.enumeration.RatingEnum;
 import org.szelc.app.antstock.data.enumeration.SectorEnum;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
@@ -29,6 +30,7 @@ public class Evaluate {
     private String dividendDay;
     private String dividendPaymentDay;
     private SectorEnum sector;
+    private MarketEnum market;
     private float course = -1;
     private float changeCourse = -1000;
     private String dateNextUpdateBuySell;
@@ -36,11 +38,12 @@ public class Evaluate {
     private String dateLatestBuySell;
     private String dateChangeBuySell = "";
     private String dateChangePointer = "";
+
  
     
     public Evaluate(String companyName, float requiredPriceToBuy, float requiredPriceToSell, float priceToBookValue,
             float priceToEarning, RatingEnum rating, float Zscore, float priceWhenEvaluatePEPBV, float dividendInZL,
-            SectorEnum sector, String dateChangeBuySell, String dateChangePointer, String dateNextUpdateBuySell, String dateEarliestBuySell,
+            SectorEnum sector, MarketEnum market, String dateChangeBuySell, String dateChangePointer, String dateNextUpdateBuySell, String dateEarliestBuySell,
             String dateLatestBuySell, String dividendDay, String dividendPaymentDay ) {
         this.companyName = companyName;
         this.requiredPriceToBuy = requiredPriceToBuy;
@@ -52,6 +55,7 @@ public class Evaluate {
         this.priceWhenEvaluatePEPBV = priceWhenEvaluatePEPBV;
         this.dividendInZL = dividendInZL;
         this.sector = sector;
+        this.market = market;
         this.dateChangeBuySell = dateChangeBuySell;
         this.dateChangePointer = dateChangePointer;
         this.dateNextUpdateBuySell = dateNextUpdateBuySell;
@@ -63,7 +67,7 @@ public class Evaluate {
     
     public Evaluate(String companyName){
         this(companyName, 0, 0, 0,
-                0, RatingEnum.RatingNotDefined, 0, 0, 0, SectorEnum.NOT_DEFINED, "", "", "", "", "", "", "");
+                0, RatingEnum.RatingNotDefined, 0, 0, 0, SectorEnum.NOT_DEFINED, MarketEnum.NOT_DEFINED, "", "", "", "", "", "", "");
     }
 
     public Integer getOrder() {
@@ -205,7 +209,15 @@ public class Evaluate {
     public void setSector(SectorEnum sector) {
         this.sector = sector;
     }
-    
+
+    public MarketEnum getMarket() {
+        return market;
+    }
+
+    public void setMarket(MarketEnum market) {
+        this.market = market;
+    }
+
     public float getCourse() {
         if(course== -1f || course == 0f){
             course =  QuoteServiceFactory.instance().getQuoteService().getCourse(companyName);        
@@ -328,6 +340,7 @@ public class Evaluate {
         rec.addField(dateLatestBuySell);
         rec.addField(dividendDay);
         rec.addField(dividendPaymentDay);
+        rec.addField(market.toString());
         return rec;
     }
 

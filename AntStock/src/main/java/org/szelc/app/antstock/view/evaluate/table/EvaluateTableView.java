@@ -1,5 +1,6 @@
 package org.szelc.app.antstock.view.evaluate.table;
 
+import org.szelc.app.antstock.data.enumeration.MarketEnum;
 import org.szelc.app.antstock.statistic.CompanyTransactionStatistic;
 import org.szelc.app.antstock.view.evaluate.table.cell.EvaluateTableEditingCell;
 import org.szelc.app.antstock.data.evaluate.Evaluate;
@@ -66,6 +67,8 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
     public TableColumn<Evaluate, String> columnPriceWhenEvaluatePEPBV;
     @FXML
     public TableColumn<Evaluate, String> columnDividendMoney;
+    @FXML
+    public TableColumn<Evaluate, String> columnMarket;
     @FXML
     public TableColumn<Evaluate, String> columnSector;
     @FXML
@@ -190,6 +193,10 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
         return columnSector;
     }
 
+    public TableColumn<Evaluate, String> getColumnMarket() {
+        return columnMarket;
+    }
+
     public TableColumn<Evaluate, String> getColumnDateNextUpdateBuySell() {
         return columnDateNextUpdateBuySell;
     }
@@ -255,6 +262,7 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
         setCellFactory(columnRequiredPriceToBuy);
         setCellFactory(columnRequiredPriceToSell);
         setCellFactory(columnSector, SectorEnum.valuesString());
+        setCellFactory(columnMarket, MarketEnum.valuesString());
         setCellFactory(columnZScore);
         setCellFactory(columnPriceWhenEvaluatePEPBV);
         setCellFactory(columnDateEarliestBuySell);

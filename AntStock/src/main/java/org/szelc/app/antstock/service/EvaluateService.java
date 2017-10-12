@@ -1,5 +1,6 @@
 package org.szelc.app.antstock.service;
 
+import org.szelc.app.antstock.data.enumeration.MarketEnum;
 import org.szelc.app.antstock.repository.EvaluateRepository;
 import org.szelc.app.antstock.data.enumeration.RatingEnum;
 import org.szelc.app.antstock.data.enumeration.SectorEnum;
@@ -72,6 +73,7 @@ public final class EvaluateService {
             String dateLatestBuySell = "";
             String dividendDay = "";
             String dividendPaymentDay = "";
+            MarketEnum market = MarketEnum.NOT_DEFINED;
             if (f.size() > 10) {
                 datePriceBuy = f.get(10);
                 if (f.size() > 11) {
@@ -86,6 +88,9 @@ public final class EvaluateService {
                                     dividendDay = f.get(15);
                                     if (f.size() > 16) {
                                         dividendPaymentDay = f.get(16);
+                                        if(f.size()>17){
+                                            market = MarketEnum.valueOf(f.get(17));
+                                        }
                                     }
                                 }
                             }
@@ -93,8 +98,9 @@ public final class EvaluateService {
                     }
                 }
             }
+
             evaluateRepository.addData(new Evaluate(companyName, requiredPriceToBuy, requiredPriceToSell, pricetToBookValue, priceToEarnings,
-                    rating, Zscore, priceWhenEvaluatePEPBV, dividendInZL, sector, datePriceBuy, datePointer, dateNextUpdateBuySell, dateEarliestBuySell,
+                    rating, Zscore, priceWhenEvaluatePEPBV, dividendInZL, sector, market, datePriceBuy, datePointer, dateNextUpdateBuySell, dateEarliestBuySell,
                     dateLatestBuySell, dividendDay, dividendPaymentDay));
         }
         return true;

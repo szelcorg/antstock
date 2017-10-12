@@ -134,6 +134,7 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
         for(DayCompanyQuote a : listA){
             boolean exist = false;
             for(DayCompanyQuote b : listB){
+                log.info("COMPARE ["+b.getCompanyName()+"] ["+a.getCompanyName()+"]");
                 if(b.getCompanyName().equals(a.getCompanyName())){
                     exist = true;
                     break;
@@ -149,21 +150,18 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
 
     public void startEvaluate(){
         System.out.println("***start task evaluate ***");
-        StringBuilder buySb= new StringBuilder();
-        StringBuilder sellSb= new StringBuilder();
+        StringBuilder buySbNew= new StringBuilder();
+        StringBuilder sellSbNew= new StringBuilder();
+
+        StringBuilder buySbLast= new StringBuilder();
+        StringBuilder sellSbLast= new StringBuilder();
+
         List<DayCompanyQuote> currentQuoteList = StockParser.displayQuotesGpwFromBankier();
 
-        if(currentQuoteList==null || currentQuoteList.size()==0){
-            System.out.println("***Komunikaty puste ***");
-            return;
-        }
+
 
         Collections.sort(currentQuoteList, (a, b)-> a.getCompanyName().compareTo(b.getCompanyName()));
-        if(equals(currentQuoteList, lastMessages)){
-            System.out.println("***List z komunikatami są tożsame ***");
-            return;
-        }
-        lastMessages = currentQuoteList;
+
 
         for(DayCompanyQuote dcqCurrent : currentQuoteList){
             if(dcqCurrent.getCourse()==-1.0f){
@@ -179,15 +177,34 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
                 if(evaluate.getRequiredPriceToBuy()!=0 && dcqCurrent.getCourse()<=evaluate.getRequiredPriceToBuy()){
                     String msg = "BUY "+dcqCurrent.getCompanyName()+" "+dcqCurrent.getCourse()+"\n";
                     System.out.println(msg);
-                    buySb.append(msg);
+                    buySbNew.append(msg);
                 }
                 if(evaluate.getRequiredPriceToSell()!=0 && dcqCurrent.getCourse()>=evaluate.getRequiredPriceToSell()){
                     String msg = "SELL "+dcqCurrent.getCompanyName()+" "+dcqCurrent.getCourse()+"\n";
                     System.out.println(msg);
-                    sellSb.append(msg);
+                    sellSbNew.append(msg);
                 }
+
             }
         }
+
+        log.info("COMPARE buySBNew ["+buySbNew.toString()+"] sellSbNew ["+sellSbNew.toString()+"]");
+
+        if(buySbLast.toString().equals(buySbNew.toString()) && sellSbLast.toString().equals(sellSbNew.toString())){
+            System.out.println("***List z komunikatami są tożsame ***");
+            return;
+        }
+        else if(buySbNew.toString().isEmpty() && sellSbNew.toString().isEmpty()){
+            System.out.println("***Komunikaty puste ***");
+            return;
+        }
+
+        buySbLast = new StringBuilder();
+        buySbLast.append(buySbNew.toString());
+
+        sellSbLast = new StringBuilder();
+        sellSbLast.append(sellSbNew.toString());
+
         Platform.runLater(() -> {
 
             alert = new Alert(Alert.AlertType.INFORMATION);
@@ -196,12 +213,12 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
             alert.setTitle("Buy/Sell");
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss yyyy-MM-dd");
             alert.setHeaderText("Communicate "+sdf.format(new Date()));
-            alert.setContentText(buySb.toString() + "\n" + sellSb);
+            alert.setContentText(buySbNew.toString() + "\n" + sellSbNew.toString());
 
 
             if(tabbedController!=null) {
                 tabbedController.addMessages(sdf.format(new Date())+"\n\n");
-                tabbedController.addMessages(buySb.toString() + "\n" + sellSb);
+                tabbedController.addMessages(buySbNew.toString() + "\n" + sellSbNew.toString());
                 tabbedController.addMessages("\n\n");
             }
             System.out.println("Dodany komunikat");
