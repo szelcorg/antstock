@@ -1,7 +1,9 @@
 package org.szelc.app.antstock;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,12 +17,15 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.apache.log4j.Logger;
 import org.szelc.app.antstock.data.messages.CompanyMessagesList;
+import org.szelc.app.antstock.task.StockMessageService;
+import org.szelc.app.antstock.task.StockMessageTask;
 import org.szelc.app.antstock.view.admin.AdminViewController;
 import org.szelc.stockthml.MessageLoader;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
 
 /**
  * @author by marcin.szelc on 2017-09-25.
@@ -39,7 +44,15 @@ public class StockMessagesController implements Initializable {
     @FXML
     private void refreshMessagesEvent(ActionEvent e){
         LOG.info("refreshMessages ");
-        refreshMessages();
+
+        StockMessageService service = new StockMessageService();
+        service.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent t) {
+                refreshMessages((CompanyMessagesList)t.getSource().getValue());
+            }
+        });
+        service.start();
     }
 
     @FXML
@@ -50,9 +63,7 @@ public class StockMessagesController implements Initializable {
         webEngine = webViewMessages.getEngine();
     }
 
-    public void refreshMessages(){
-        CompanyMessagesList msgList = MessageLoader.loadMessageForCompanies();
-
+    public void refreshMessages(CompanyMessagesList msgList){
         Hyperlink[] hpls = new Hyperlink[msgList.getMessageList().size()];
         int i=0;
         for(CompanyMessagesList.Message msg : msgList.getMessageList()){

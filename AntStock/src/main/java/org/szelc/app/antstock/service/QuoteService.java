@@ -60,7 +60,7 @@ public final class QuoteService {
             try{
                 result.addDayCompanyQuote(dcqList.get(dcqList.size() - 1));
             }
-            catch(ArrayIndexOutOfBoundsException e){
+            catch(Exception e){
                 log.info("ArrayIndex ["+company+"]");
             }
 

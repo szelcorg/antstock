@@ -8,12 +8,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.szelc.app.antstock.data.messages.CompanyMessagesList;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
+import org.szelc.logger.LOG;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class StockParser {
 
@@ -27,6 +26,8 @@ public class StockParser {
 
     private static String URL_GPW_QUOTES_BANKIER = "http://www.bankier.pl/gielda/notowania/akcje";
 
+    private static String URL_GPW_COMPANY_CODE = "https://www.gpw.pl/wskazniki";
+
 
     private static final Logger log = Logger.getLogger(StockParser.class);
 
@@ -37,6 +38,46 @@ public class StockParser {
     public List<DayCompanyQuote> displayQuotesNewConnectFromBankier(){
         return displayQuotesFromBankier(URL_NEW_CONNECT_QUOTES_BANKIER);
     }
+
+
+    public static Map<String, String> getCompanyCodesMap(){
+        LOG.i("Starting getCompanyCodesMap");
+        Map<String, String> result = new HashMap<>();
+        result.put("PLHOOP000010", "HOOP");
+        result.put("PLPEKAS00017", "PEKAES");
+        result.put("UNICREDIT", "UNICREDIT");
+        result.put("Fortuna", "FORTUNA");
+        result.put("CEZ", "CEZ");
+     /*   result.put("LU0327357389", "KERNEL");*/
+        result.put("KERNEL", "KERNEL");
+        String address = URL_GPW_COMPANY_CODE;
+        String html_id = "footable_K";
+        Document doc = null;
+        try {
+            doc = Jsoup.parse(new URL(address), 10000);
+            //LOG.i("Loaded document "+doc.text());
+        } catch (IOException e) {
+            log.error("Can't loading page ["+address+"]");
+            return null;
+        }
+
+        Element table = doc.getElementById(html_id);
+        //LOG.i("Table "+table.toString());
+        Elements tbody = table.select("tbody");
+        Elements rows = tbody.select("tr");
+        LOG.i("rows size"+rows.size());
+        for(int i=0; i<rows.size();i++){
+            Element row = rows.get(i);
+            Elements cols = row.select("td");
+            String code = cols.get(1).html();
+            String name = cols.get(2).html();
+            LOG.i(""+code+" "+name);
+            result.put(code, name);
+
+        }
+        return result;
+    }
+
 
     public static List<DayCompanyQuote> displayQuotesFromBankier(String address){
         List<DayCompanyQuote> result = new ArrayList<>();
@@ -75,7 +116,7 @@ public class StockParser {
             result.add(dcq);
 
             if(!cols.isEmpty()) {
-               // log.info(company+" "+courseStr);//+" : "+cols.get(1).html()+" : "+cols.get(2).html()+" : "+cols.get(3).html()+" : "+cols.get(4).html()+" : "+cols.get(5).html());
+                // log.info(company+" "+courseStr);//+" : "+cols.get(1).html()+" : "+cols.get(2).html()+" : "+cols.get(3).html()+" : "+cols.get(4).html()+" : "+cols.get(5).html());
             }
         }
         return result;

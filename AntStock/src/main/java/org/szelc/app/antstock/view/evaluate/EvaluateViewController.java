@@ -44,31 +44,31 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
     private CheckBox autoSortAfterModifyCheck;
     @FXML
     private Button addEvaluateBtn;
-     @FXML 
+    @FXML
     private TextField newEvaluateCompanyTF;
-    
+
     @FXML
     private Button removeEvaluateBtn;
-    
+
     @FXML
     private TextField searchCompanyField;
-  
-    
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             setEvaluateOnTableView(new TransactionFilter());
         } catch (FileNotFoundException ex) {
-            
+
             log.error(ex);
             System.exit(0);
         }
-       evaluateTableView.setTableUpdate(this);
-       evaluateTableView.setController(this);
-       autoSortAfterModifyCheck.setSelected(true);
-    }    
-    
-       private void setEvaluateOnTableView(TransactionFilter filter) throws FileNotFoundException {
+        evaluateTableView.setTableUpdate(this);
+        evaluateTableView.setController(this);
+        autoSortAfterModifyCheck.setSelected(true);
+    }
+
+    private void setEvaluateOnTableView(TransactionFilter filter) throws FileNotFoundException {
         evaluateDataList = FXCollections.observableArrayList(
                 EvaluateServiceFactory.instance().getEvaluateService().getEvaluateRepository().getEvaluateStockDataList()
         );
@@ -81,7 +81,7 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
         startTask();
         //startTaskEvaluate();
     }
-       
+
     private void addEvent() {
         addEvaluateBtn.setOnAction((ActionEvent event) -> {
             log.info("addEventForEvaluate");
@@ -100,10 +100,10 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
             persistEvaluate();
             afterUpdate();
         });
-        
-       
+
+
     }
-    
+
     private void afterUpdate(){
         evaluateTableView.update();
     }
@@ -171,16 +171,18 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
             if(!elList.isEmpty()){
 
                 Evaluate evaluate = elList.get(0);
-               /** System.out.println("COMPARE ["+dcqCurrent.getCompanyName()+"] "+dcqCurrent.getCourse()+"] "
-                        + " "+evaluate.getCompanyName()+" "+evaluate.getRequiredPriceToBuy()+" "+evaluate.getRequiredPriceToSell());
-*/
+                /** System.out.println("COMPARE ["+dcqCurrent.getCompanyName()+"] "+dcqCurrent.getCourse()+"] "
+                 + " "+evaluate.getCompanyName()+" "+evaluate.getRequiredPriceToBuy()+" "+evaluate.getRequiredPriceToSell());
+                 */
                 if(evaluate.getRequiredPriceToBuy()!=0 && dcqCurrent.getCourse()<=evaluate.getRequiredPriceToBuy()){
-                    String msg = "BUY "+dcqCurrent.getCompanyName()+" "+dcqCurrent.getCourse()+"\n";
+                    String msg = "BUY "+dcqCurrent.getCompanyName()+" current "+dcqCurrent.getCourse()+"  required "+ evaluate.getRequiredPriceToBuyStr()  +" bonus percent" +
+                            " "+( evaluate.getRequiredPriceToBuy()/dcqCurrent.getCourse()*100 - 100)+"\n";
                     System.out.println(msg);
                     buySbNew.append(msg);
                 }
                 if(evaluate.getRequiredPriceToSell()!=0 && dcqCurrent.getCourse()>=evaluate.getRequiredPriceToSell()){
-                    String msg = "SELL "+dcqCurrent.getCompanyName()+" "+dcqCurrent.getCourse()+"\n";
+                    String msg = "SELL "+dcqCurrent.getCompanyName()+" current "+dcqCurrent.getCourse()+"  required "+ evaluate.getRequiredPriceToSellStr()  +" bonus percent" +
+                            " "+( dcqCurrent.getCourse()/evaluate.getRequiredPriceToSell()*100 - 100)+"\n";
                     System.out.println(msg);
                     sellSbNew.append(msg);
                 }
@@ -208,6 +210,8 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
         Platform.runLater(() -> {
 
             alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setWidth(600);
+
             System.out.println("ShowAndWait");
 
             alert.setTitle("Buy/Sell");
@@ -263,5 +267,5 @@ public class EvaluateViewController implements Initializable , TableUpdateEvent 
     public void setTabbedController(TabbedController tabbedController){
         this.tabbedController = tabbedController;
     }
-     
+
 }

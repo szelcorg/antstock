@@ -2,6 +2,7 @@ package org.szelc.stockthml;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.szelc.stock.bean.StockDividens;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -41,9 +42,10 @@ public class StockParserTest {
         //2 - transactioned
         List<String> companies = getCompanyList(0);
         Assert.assertFalse(companies.isEmpty());
-
+/**
         List<String> result= stockParser.displayMultiplePageMesssageOnet(10, onlyToday,
                 companies);
+ */
     }
 
     @Test
@@ -68,6 +70,12 @@ public class StockParserTest {
         } catch (IOException e) {
             return null;
         }
+
+    }
+
+    @Test
+    public void getCompanyCodesMap(){
+        StockParser.getCompanyCodesMap();
     }
 
 }

@@ -49,6 +49,7 @@
             </content>
         </Tab>
 
+
         <Tab text="Evaluate">
             <content>
                 <fx:include fx:id="evaluateView" source="/org/szelc/app/antstock/view/evaluate/EvaluateView.fxml" />

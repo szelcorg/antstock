@@ -3,11 +3,13 @@ package org.szelc.app.antstock.a.web;
 /**
  * @author by marcin.szelc on 2017-09-25.
  */
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -18,13 +20,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.szelc.app.antstock.settings.Settings;
 import org.w3c.dom.Document;
 import org.w3c.dom.html.HTMLElement;
 import org.w3c.dom.html.HTMLFormElement;
 import org.w3c.dom.html.HTMLInputElement;
 
 /**
- *
  * @author Alvin Tabontabon
  */
 public class WebUIController implements Initializable {
@@ -53,7 +55,7 @@ public class WebUIController implements Initializable {
         System.out.println("GO ACTION");
         webEngineCustom.load(txtURL.getText().startsWith("http://") ? txtURL.getText() : "http://" + txtURL.getText());
         webEngineCustom.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
-            if ( newState == Worker.State.FAILED) {
+            if (newState == Worker.State.FAILED) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Information Dialog");
                 alert.setHeaderText("Zły adres");
@@ -68,23 +70,23 @@ public class WebUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        if(webViewCustom!=null) {
+        if (webViewCustom != null) {
             webEngineCustom = webViewCustom.getEngine();
         }
 
-        if(webViewAliorbank!=null) {
+        if (webViewAliorbank != null) {
             webEngineAliorbank = webViewAliorbank.getEngine();
-            webEngineAliorbank.load("http://aliorbank.pl");
+            webEngineAliorbank.load(Settings.WWW_ALIOR);
         }
 
-        if(webViewBossa!=null) {
+        if (webViewBossa != null) {
             webEngineBossa = webViewBossa.getEngine();
-            webEngineBossa.load("http://bossa.pl");
+            webEngineBossa.load(Settings.WWW_BOSSA);
         }
 
-        if(webViewBrokeralior!=null) {
+        if (webViewBrokeralior != null) {
             webEngineBrokeralior = webViewBrokeralior.getEngine();
-            webEngineBrokeralior.load("https://broker.aliorbank.pl/narzedzia/profil-spolki/");
+            webEngineBrokeralior.load(Settings.WWW_ALIOR_BROKER);
         }
 
 
@@ -92,7 +94,7 @@ public class WebUIController implements Initializable {
         String password;
         Properties props = new Properties();
         try {
-            props.load(new FileInputStream("C://secret/pass.properties"));
+            props.load(new FileInputStream(Settings.PROPERTIES));
             username = props.getProperty("bab.login");
             password = props.getProperty("bab.pass");
         } catch (IOException e) {
@@ -104,7 +106,7 @@ public class WebUIController implements Initializable {
         String enterPw = "document.getElementsByName('haslo')[0].value='" + password + "';";
         String enterUserName = "document.getElementById('login').value='" + username + "';";
 
-        if(webEngineBrokeralior!=null) {
+        if (webEngineBrokeralior != null) {
             webEngineBrokeralior.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
                 if (newState == Worker.State.SUCCEEDED) {
                     try {
@@ -124,7 +126,7 @@ public class WebUIController implements Initializable {
             });
         }
 
-        if(txtURL!=null)
+        if (txtURL != null)
             txtURL.setText("http://www.google.com");
     }
 }

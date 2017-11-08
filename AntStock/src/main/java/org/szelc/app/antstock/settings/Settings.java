@@ -61,6 +61,12 @@ public class Settings {
     public static final SimpleDateFormat STATISTIC_VIEW_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     public static final String STATISTIC_START_DATE_STR = "2015-01-01";
 
+    public static final String PROPERTIES = "C:\\github\\antstock.properties";
+
+    public static final String WWW_BOSSA = "http://bossa.pl";
+    public static final String WWW_ALIOR = "http://aliorbank.pl";
+    public static final String WWW_ALIOR_BROKER = "https://broker.aliorbank.pl/narzedzia/profil-spolki/";
+
     static {
         DECIMAL_FORMAT_INTEGER.setGroupingSize(3);
 
