@@ -33,12 +33,12 @@
                     </cellValueFactory>
                 </TableColumn>
                 
-                <TableColumn minWidth="100.0" prefWidth="-1.0" text="%company.name" id="company" > 
+                <TableColumn minWidth="100.0" prefWidth="-1.0" text="%company.name" id="company" >
                     <cellValueFactory>
                         <PropertyValueFactory property="companyName" />
                     </cellValueFactory>
                 </TableColumn>
-                
+
                   <TableColumn minWidth="100.0" prefWidth="-1.0" text="Course" id="course">
                     <cellValueFactory>
                         <PropertyValueFactory property="courseStr" />
@@ -95,37 +95,37 @@ th="100.0" prefWidth="-1.0" text="requiredPriceToBuy">
                     <cellValueFactory>
                         <PropertyValueFactory property="requiredPriceToSell" />
                     </cellValueFactory>
-                </TableColumn>     
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="priceToBookValue">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceToBookValue" />
                     </cellValueFactory>
-                </TableColumn>    
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="priceToEarning">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceToEarning" />
                     </cellValueFactory>
-                </TableColumn>      
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="rating">
                     <cellValueFactory>
                         <PropertyValueFactory property="rating" />
                     </cellValueFactory>
-                </TableColumn>  
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="Zscore">
                     <cellValueFactory>
                         <PropertyValueFactory property="Zscore" />
                     </cellValueFactory>
-                </TableColumn>       
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="priceWhenEvaluatePEPBV">
                     <cellValueFactory>
                         <PropertyValueFactory property="priceWhenEvaluatePEPBV" />
                     </cellValueFactory>
-                </TableColumn> 
+                </TableColumn>
                 <TableColumn minWidth="100.0" prefWidth="-1.0" text="dividendInZL">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendInZL" />
                     </cellValueFactory>
-                </TableColumn> 
+                </TableColumn>
                  <TableColumn minWidth="100.0" prefWidth="-1.0" text="sector">
                     <cellValueFactory>
                         <PropertyValueFactory property="sector" />
