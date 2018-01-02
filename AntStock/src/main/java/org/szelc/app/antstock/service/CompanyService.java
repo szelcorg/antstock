@@ -38,10 +38,10 @@ public class CompanyService {
                 "GLOBCITYHD", "IVMX", "BPHFIZSN", "DUON", "FENGHUA", "DTP", "MIDAS", "MAGELLAN",
                 "NFIEMF", "ROVESE", "BANKBPH", "ZETKAMA", "BPHFIZDS", "INTSNKX07971", "DUDA", "INTSNAG11528",
                 "PEKAES", "INTLPZU15610", "KOFOLA", "CAMMEDIA", "SOBIESKI", "INTSSLV16642", "TRIGONPP5",
-                "INTSUSD16675", "INTSGLD16634",//nie notowane
+                "INTSUSD16675", "INTSGLD16634", "POLNA",//nie notowane
 
-                "KERDOS", "IDEON", "MSXRESOUR", "MIRACULUM", "ONE2ONE", "SKOTAN", "GANT", "IDMSA", "COALENERG", "B3SYSTEM", "AGROTON", "INTERBUD", "FOTA", "RANKPROGR",
-                "BIOMEDLUB", "CALATRAVA", "SADOVAYA",//bardzo słabe
+                "ALMA", "MNI", "KERDOS", "IDEON", "MSXRESOUR", "MIRACULUM", "ONE2ONE", "SKOTAN", "GANT", "IDMSA", "COALENERG", "B3SYSTEM", "AGROTON", "INTERBUD", "FOTA", "RANKPROGR",
+                "BIOMEDLUB", "CALATRAVA", "SADOVAYA", //bardzo słabe
 
                 "WINVEST", "RCCRUAOPEN", "IQP", "ATLANTIS", "DRAGOWSKI", "EVEREST", "FON", "RUBICON", "PTI",//zla branza
 

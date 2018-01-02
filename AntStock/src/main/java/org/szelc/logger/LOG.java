@@ -8,4 +8,7 @@ public class LOG {
     public static void i(String message){
         System.out.println(message);
     }
+    public static void w(String message){
+        System.out.println(message);
+    }
 }

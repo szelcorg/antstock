@@ -2,18 +2,86 @@ package org.szelc.stockthml;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
+import org.szelc.financial.report.Report;
+import org.szelc.financial.report.writer.ReportSqliteWriter;
+import org.szelc.logger.LOG;
+import org.szelc.sqlite.SQLiteJDBCDriverConnection;
 import org.szelc.stock.bean.StockDividens;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class StockParserTest {
     private static System.Logger LOGGER1 = System.getLogger("MyLogger");
+    private static String URL_GPW_QUOTES_BANKIER = "http://www.bankier.pl/gielda/notowania/akcje";
+    @Test
+    public void sqlite() {
+
+        List<DayCompanyQuote> dcqList = StockParser.displayQuotesFromBankier(URL_GPW_QUOTES_BANKIER);
+        List<String> companyList = new ArrayList<>();
+        for(DayCompanyQuote dcq: dcqList){
+            String company = dcq.getCompanyName();
+            LOG.i(company);
+            companyList.add(dcq.getCompanyName());
+
+
+
+        }
+        SQLiteJDBCDriverConnection.insertCompany(companyList);
+        LOG.i("Count ["+dcqList.size()+"]");
+
+        //SQLiteJDBCDriverConnection.connect();
+      //  String dbname = "stock2.db";
+        //SQLiteJDBCDriverConnection.createNewDatabase(dbname);
+        //SQLiteJDBCDriverConnection.createTableCompany(dbname);
+
+        /**
+        try {
+            SQLiteJDBCDriverConnection.select(dbname);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+         */
+    }
+
+
+    private List<String> loadCompanies(){
+        List<DayCompanyQuote> dcqList = StockParser.displayQuotesFromBankier(URL_GPW_QUOTES_BANKIER);
+        List<String> companyList = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        for(DayCompanyQuote dcq: dcqList) {
+            String company = dcq.getCompanyName();
+            result.add(company);
+        }
+        return result;
+    }
+
+    @Test
+    public void displayReportFromBankier(){
+        List<String> companyList = List.of("KGHM");
+        int countPage = 1;
+        List<Report> reportList = StockParser.loadQuartalReportFromBankier(companyList, countPage);
+        long t1 = System.currentTimeMillis();
+        for(Report report : reportList){
+            LOG.i(""+report);
+        }
+
+        LOG.i("Processing time ["+(System.currentTimeMillis() - t1)+"]");
+
+        ReportSqliteWriter.writetToDB(reportList);
+
+        //StockParser.displayHalfReportFromBankier(companyList, pageList);
+        //StockParser.displayYearReportFromBankier(companyList, pageList);
+    }
+
 
     @Test
     public void displayQuotesGpwFromBankier() throws Exception {
