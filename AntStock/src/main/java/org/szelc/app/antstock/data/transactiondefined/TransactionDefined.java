@@ -19,15 +19,17 @@ public class TransactionDefined implements Cloneable {
     private Float priceToAction;
     private String dateEffectiveFrom;
     private String createdTime;
+    private String bank;
     //private TransactionDefinedData definedData;
     private TransactionDefinedActivity definedActivity;
     private float course = -1;
     private float toActionPercent = TO_ACTION_PERCENT_NOT_DEFINED;
 
      public TransactionDefined(String company, TransactionType transactionType){
-         this(company, transactionType, 0f, Settings.TRANSACTION_DEFINED_DATE_FORMAT_IN_FILE.format(new Date()),  TransactionDefinedActivity.HAND);
+
+         this(company, transactionType, 0f, Settings.TRANSACTION_DEFINED_DATE_FORMAT_IN_FILE.format(new Date()),  TransactionDefinedActivity.HAND, "");
      }
-    public TransactionDefined(String company, TransactionType transactionType, Float priceToBuy, String dateEffectiveFrom, TransactionDefinedActivity definedActivity) {
+    public TransactionDefined(String company, TransactionType transactionType, Float priceToBuy, String dateEffectiveFrom, TransactionDefinedActivity definedActivity, String bank) {
         this.company = company;
         this.transactionType = transactionType;
         this.priceToAction = priceToBuy;
@@ -35,9 +37,17 @@ public class TransactionDefined implements Cloneable {
         this.createdTime = Settings.TRANSACTION_DEFINED_DATE_FORMAT_IN_FILE.format(new Date());
        // this.definedData = definedData;
         this.definedActivity = definedActivity;
+        this.bank = bank;
     }
-    
-    
+
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
 
     public String getCompany() {
         return company;
@@ -144,6 +154,7 @@ public class TransactionDefined implements Cloneable {
         rec.addField(dateEffectiveFrom);
         rec.addField(definedActivity.toString());
         rec.addField(createdTime);
+        rec.addField(bank);
         return rec;
 //        StringBuilder sb = new StringBuilder();
 //        sb.append(company);

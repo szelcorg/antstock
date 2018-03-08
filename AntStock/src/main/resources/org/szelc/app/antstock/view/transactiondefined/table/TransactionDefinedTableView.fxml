@@ -44,6 +44,12 @@
                   <PropertyValueFactory property="transactionType" />
                </cellValueFactory>
             </TableColumn>
+
+             <TableColumn minWidth="120.0" prefWidth="-1.0" text="Bank" id="type" fx:id = "columnBank">
+                 <cellValueFactory>
+                     <PropertyValueFactory property="bank" />
+                 </cellValueFactory>
+             </TableColumn>
              
              <TableColumn minWidth="120.0" prefWidth="-1.0" text="Price" id="priceToBuy" fx:id="columnPrice">
                <cellValueFactory>

@@ -118,7 +118,7 @@ public class TransactionDefinedManager {
                             + " price [" + currentPriceToBuy + "]");
                     String dateEffective = Settings.TRANSACTION_DEFINED_DATE_FORMAT_IN_FILE.format(new Date());
                     TransactionDefined tdd = new TransactionDefined(company, transactionType,
-                            priceToBuy, dateEffective, TransactionDefinedActivity.LONG);
+                            priceToBuy, dateEffective, TransactionDefinedActivity.LONG, "");
                     transactionDefinedContainer.addTransactionData(tdd);
                     result.add(tdd);
                 } else {
@@ -145,7 +145,7 @@ public class TransactionDefinedManager {
                 if ((persistTDD = getTransactionDefined(company, transactionType)) == null) {
                     log.info("Must create TransactionDefinedData company [" + company + "] transactionType [" + transactionType + "] price [" + currentPriceToSell + "]");
                     String dateEffective = Settings.TRANSACTION_DEFINED_DATE_FORMAT_IN_FILE.format(new Date());
-                    TransactionDefined tdd = new TransactionDefined(company, transactionType, priceToSell, dateEffective,  TransactionDefinedActivity.LONG);
+                    TransactionDefined tdd = new TransactionDefined(company, transactionType, priceToSell, dateEffective,  TransactionDefinedActivity.LONG, "");
                     transactionDefinedContainer.addTransactionData(tdd);
                     result.add(tdd);
                 } else {

@@ -44,6 +44,8 @@ public class TransactionDefinedTableView extends AnchorPane implements TableInte
     private TableColumn columnDefinedActivity;
     @FXML
     private TableColumn columnToActionPercent;
+    @FXML
+    private TableColumn columnBank;
 
     public TransactionDefinedTableView() {
         log.info("TransactionDefinedTable component constructor");
@@ -72,6 +74,7 @@ public class TransactionDefinedTableView extends AnchorPane implements TableInte
         setCellFactory(columnType);
         setCellFactory(columnPrice);
         setCellFactory(columnDateEffectiveFrom);
+        setCellFactory(columnBank);
     }
 
     
@@ -137,7 +140,7 @@ public class TransactionDefinedTableView extends AnchorPane implements TableInte
         return columnDateEffectiveFrom;
     }
     
-    
+    public TableColumn getColumnBank() {return columnBank;}
 
     public TableView<TransactionDefined> getTable() {
         return table;

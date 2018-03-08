@@ -75,7 +75,7 @@ public class FtpUtil {
     }
 
     public static boolean[] uploadFile(List<String> srcList, List<String> dstList) {
-        boolean result[] = new boolean[]{false, false};
+        boolean result[] = new boolean[srcList.size()];
         FTPClient ftpClient = connect(server, port, user, pass);
         if (ftpClient == null) {
             System.out.println("Brak polaczania");
@@ -147,7 +147,7 @@ public class FtpUtil {
     }
 
     public static boolean[] downloadFile(List<String> srcList, List<String> dstList) {
-        boolean result[] = new boolean[]{false, false};
+        boolean result[] = new boolean[srcList.size()];
         FTPClient ftpClient = connect(server, port, user, pass);
         if (ftpClient == null) {
             System.out.println("Brak polaczania");

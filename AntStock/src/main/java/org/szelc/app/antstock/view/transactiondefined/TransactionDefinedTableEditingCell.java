@@ -37,8 +37,14 @@ public class TransactionDefinedTableEditingCell extends EditingCell<TransactionD
             getTableView().getSelectionModel().getSelectedItem().setPriceToAction(Float.valueOf(textField.getText().replace(",", ".")));
             getTableView().getSelectionModel().getSelectedItem().setToActionPercent(TransactionDefined.TO_ACTION_PERCENT_NOT_DEFINED);
         }
-            else if (column == t.getColumnDateEffectiveFrom()) {
+        else if (column == t.getColumnDateEffectiveFrom()) {
             getTableView().getSelectionModel().getSelectedItem().setDateEffectiveFrom(textField.getText());
+        }
+        else if (column == t.getColumnDateEffectiveFrom()) {
+            getTableView().getSelectionModel().getSelectedItem().setDateEffectiveFrom(textField.getText());
+        }
+        else if (column == t.getColumnBank()) {
+            getTableView().getSelectionModel().getSelectedItem().setBank(textField.getText());
         }
         commitEdit(textField.getText());
         return true;
