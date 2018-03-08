@@ -13,8 +13,11 @@ import org.szelc.app.antstock.comparator.IntegerFormatComparator;
  */
 public class Settings {
 
+
+
     public static final String APP_HOME_PATH = Paths.get("").toAbsolutePath().toString() + File.separator;
     public static final String STORAGE_PATH = APP_HOME_PATH + "Storage" + File.separator;
+    public static final String DATABASE_SQLITE_PATH = "jdbc:sqlite:"+STORAGE_PATH+"db"+File.separator+"sqlite"+File.separator+"AntStock.db";
     public static final String CACHE_PATH = STORAGE_PATH + "cache"+ File.separator;
     
     public static final IntegerFormatComparator COMPARATOR_INT_FORMAT= new IntegerFormatComparator();

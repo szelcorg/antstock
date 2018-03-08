@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.szelc.app.antstock.data.messages.CompanyMessagesList;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
+import org.szelc.financial.report.*;
 import org.szelc.logger.LOG;
 
 import java.io.IOException;
@@ -77,6 +78,108 @@ public class StockParser {
         }
         return result;
     }
+
+
+
+    private static List<Report> loadReportFromBankier(String type, List<String> companyList, int countPage){
+        int totalToProcessing = companyList.size() * countPage;
+        List<Report> result = new ArrayList<>();
+        int numberProcessed = 0;
+        int percentLast = 0;
+        for(String company: companyList){
+            for(int page=1; page<countPage+1; page++) {
+                List<Report> reportList = loadReportFromBankier(type, company, ""+page);
+                numberProcessed++;
+                int newPercent = (100*numberProcessed/totalToProcessing);
+                if(newPercent>percentLast) {
+                    log.info("PERCENT [" + newPercent + "]");
+                    percentLast = newPercent;
+                }
+                if(reportList!=null) {
+                    result.addAll(reportList);
+                }
+            }
+        }
+        return result;
+    }
+
+
+    public static List<Report> loadQuartalReportFromBankier(List<String> companyList, int countPage){
+        return loadReportFromBankier("kwartalny", companyList, countPage);
+    }
+
+    public static  List<Report> loadHalfReportFromBankier(List<String> companyList,int countPage){
+        return loadReportFromBankier("polroczny", companyList, countPage);
+    }
+
+    public static  List<Report> loadYearReportFromBankier(List<String> companyList, int countPage){
+        return loadReportFromBankier("roczny", companyList, countPage);
+    }
+
+    public static List<Report> loadReportFromBankier(String type, String company, String page){
+        String address = "https://www.bankier.pl/gielda/notowania/akcje/" + company + "/wyniki-finansowe/skonsolidowany/"+type+"/standardowy/"+page;
+        Document doc = null;
+        try {
+            doc = Jsoup.parse(new URL(address), 10000);
+        } catch (IOException e) {
+            log.error("Can't loading page ["+address+"]");
+            e.printStackTrace();
+           return null;
+        }
+
+        log.debug("Start parsing page ["+address+"]");
+        Elements div = doc.getElementsByClass("boxContent boxTable");
+        Elements table = div.select("table");
+        Elements rows = table.select("tr");
+
+        if(rows==null){
+            return null;
+        }
+
+        Element headers;
+
+        try {
+            headers = rows.get(0);
+        }
+        catch(Exception e){
+            return null;
+        }
+        List<Report> reportList = new ArrayList<>();
+        for(int i=0;i<4;i++){
+            String header;
+
+            try {
+                header = headers.select("strong").get(i).html();
+            }
+            catch(Exception e){
+                return reportList;
+            }
+            if(header==null){
+                return reportList;
+            }
+            reportList.add(new Report(new Company(company), ReportType.fromStr(type), header));
+        }
+
+        for(int i=1; i<rows.size();i++){
+            Element row = rows.get(i);
+            String fieldName = row.getElementsByClass("charts").html();
+            int index = fieldName.indexOf("<");
+            if(index==-1){
+                return reportList;
+            }
+            fieldName = fieldName.substring(0, index);
+            log.debug("[d:"+i+ "] ["+fieldName+"]");
+
+           for(int col=1; col<5; col++){
+               String value = row.select("td").get(col).html().replaceAll("&nbsp;", "").replaceAll(",",".");
+               ReportData reportData = new ReportData(new ReportField(i, fieldName), value==null || value.isEmpty() ? 0 : Float.valueOf(value));
+               reportList.get(col-1).addReportData(reportData);
+           }
+        }
+
+        return reportList;
+    }
+
 
 
     public static List<DayCompanyQuote> displayQuotesFromBankier(String address){
