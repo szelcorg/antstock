@@ -9,10 +9,14 @@ import org.szelc.app.antstock.loader.filter.TransactionFilter;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
 import org.szelc.app.antstock.settings.Settings;
 import org.szelc.csv.model.CSVRecord;
 import org.szelc.csv.model.CSVRecords;
 import org.szelc.csv.reader.CSVReader;
+import org.szelc.financial.report.ReportData;
+import org.szelc.financial.report.reader.ReportSqliteReader;
 
 /**
  *
@@ -99,9 +103,22 @@ public final class EvaluateService {
                 }
             }
 
-            evaluateRepository.addData(new Evaluate(companyName, requiredPriceToBuy, requiredPriceToSell, pricetToBookValue, priceToEarnings,
+            Map<Integer, ReportData> financialReport4Q = null;
+            if(companyName.equals("KGHM")){
+                financialReport4Q = ReportSqliteReader.report4QForCompany(221L);
+            }
+
+           // ReportSql
+
+            Evaluate evaluate = new Evaluate(companyName, requiredPriceToBuy, requiredPriceToSell, pricetToBookValue, priceToEarnings,
                     rating, Zscore, priceWhenEvaluatePEPBV, dividendInZL, sector, market, datePriceBuy, datePointer, dateNextUpdateBuySell, dateEarliestBuySell,
-                    dateLatestBuySell, dividendDay, dividendPaymentDay));
+                    dateLatestBuySell, dividendDay, dividendPaymentDay);
+            if(financialReport4Q!=null) {
+                evaluate.setNumberOfShares(financialReport4Q.get(9).getValue().longValue() * 1000);
+                evaluate.setProfitIn4Q(financialReport4Q.get(4).getValue() * 1000 );
+                evaluate.setBookValuePerShare(financialReport4Q.get(11).getValue());
+            }
+            evaluateRepository.addData(evaluate);
         }
         return true;
     }

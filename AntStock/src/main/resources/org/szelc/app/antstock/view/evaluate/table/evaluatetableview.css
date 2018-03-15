@@ -1,5 +1,5 @@
 #percentToBuy, #requiredPriceToBuy, #course, #requiredPriceToSell, #percentToSell, #priceToBookValue, #priceToEarning, #rating,
-#Zscore, #priceWhenEvaluatePEPBV, #dividendInZL, #sector, #change{
+#Zscore, #priceWhenEvaluatePEPBV, #dividendInZL, #sector, #change, #profitPerShare{
     -fx-alignment: CENTER-RIGHT;
 }
 

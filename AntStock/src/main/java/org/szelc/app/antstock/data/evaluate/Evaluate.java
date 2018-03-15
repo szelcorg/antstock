@@ -39,6 +39,10 @@ public class Evaluate {
     private String dateChangeBuySell = "";
     private String dateChangePointer = "";
 
+    private Float profitIn4Q;
+    private Long numberOfShares;
+    private Float bookValuePerShare;
+
  
     
     public Evaluate(String companyName, float requiredPriceToBuy, float requiredPriceToSell, float priceToBookValue,
@@ -64,7 +68,32 @@ public class Evaluate {
         this.dividendDay = dividendDay;
         this.dividendPaymentDay = dividendPaymentDay;
     }
-    
+
+
+    public Float getProfitIn4Q() {
+        return profitIn4Q;
+    }
+
+    public void setProfitIn4Q(Float profitIn4Q) {
+        this.profitIn4Q = profitIn4Q;
+    }
+
+    public Long getNumberOfShares() {
+        return numberOfShares;
+    }
+
+    public void setNumberOfShares(Long numberOfShares) {
+        this.numberOfShares = numberOfShares;
+    }
+
+    public Float getBookValuePerShare() {
+        return bookValuePerShare;
+    }
+
+    public void setBookValuePerShare(Float bookValuePerShare) {
+        this.bookValuePerShare = bookValuePerShare;
+    }
+
     public Evaluate(String companyName){
         this(companyName, 0, 0, 0,
                 0, RatingEnum.RatingNotDefined, 0, 0, 0, SectorEnum.NOT_DEFINED, MarketEnum.NOT_DEFINED, "", "", "", "", "", "", "");
@@ -179,7 +208,8 @@ public class Evaluate {
     }
     
     public float getPriceToBookValue() {
-        return priceWhenEvaluatePEPBV==0 ? 0 : priceToBookValue * getCourse() / priceWhenEvaluatePEPBV;
+        return bookValuePerShare !=null ?  getCourse() / bookValuePerShare :
+                priceWhenEvaluatePEPBV==0 ? 0 : priceToBookValue * getCourse() / priceWhenEvaluatePEPBV;
     }
 
     public String getPriceToBookValueStr() {
@@ -190,8 +220,18 @@ public class Evaluate {
         this.priceToBookValue = priceToBookValue;
     }
 
-    public float getPriceToEarning() {        
-         return priceWhenEvaluatePEPBV == 0 ? 0 : priceToEarning * getCourse() / priceWhenEvaluatePEPBV;
+    public float getPriceToEarning() {
+        return bookValuePerShare!=null ? (getCourse() * (float)numberOfShares / profitIn4Q) :
+            priceWhenEvaluatePEPBV == 0 ? 0 : priceToEarning * getCourse() / priceWhenEvaluatePEPBV;
+    }
+
+    public float getProfitPerShare(){
+        return bookValuePerShare!=null ? profitIn4Q / numberOfShares :
+                0f;
+    }
+
+    public String getProfitPerShareStr(){
+        return Settings.DECIMAL_FORMAT_FLOAT.format(getProfitPerShare());
     }
 
     public String getPriceToEarningStr() {

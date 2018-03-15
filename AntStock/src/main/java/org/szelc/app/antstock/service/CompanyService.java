@@ -41,13 +41,15 @@ public class CompanyService {
                 "INTSUSD16675", "INTSGLD16634", "POLNA",//nie notowane
 
                 "ALMA", "MNI", "KERDOS", "IDEON", "MSXRESOUR", "MIRACULUM", "ONE2ONE", "SKOTAN", "GANT", "IDMSA", "COALENERG", "B3SYSTEM", "AGROTON", "INTERBUD", "FOTA", "RANKPROGR",
-                "BIOMEDLUB", "CALATRAVA", "SADOVAYA", //bardzo słabe
+                "BIOMEDLUB", "CALATRAVA", "SADOVAYA", "PETROLINV", //bardzo słabe
 
                 "WINVEST", "RCCRUAOPEN", "IQP", "ATLANTIS", "DRAGOWSKI", "EVEREST", "FON", "RUBICON", "PTI",//zla branza
 
                 "IIAAV", "ARK12FRM", "DBDAIM1218", "RCSDAXOPEN", "4FUNMEDIA", "FON", "ELKOP", "RSCUGAOPEN", "REINHOLD", "TERMOREX", "IPERMFIZ", "RCSUGAOPEN", "ARK2FRN15",//niewiadomo
 
                 "ORCOGROUP", "WIKANA", "DMWDM", "BBIDEV", "STARHEDGE",//nie interesuje mnie branza
+
+                    "PLANETINN", //niskie obroty, niska cena, NC
 
                 "IMCOMPANY", "KDMSHIPNG", "COALENERG",//ukraina
                 "AVIAAML",//litwa
