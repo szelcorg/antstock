@@ -4,3 +4,7 @@ build
 distributions
 /.idea
 /.idea/workspace.xml
+AntStock/.idea/codeStyles/Project.xml
+AntStock/.idea/compiler.xml
+AntStock/.idea/vcs.xml
+AntStock/build.gradle
