@@ -14,3 +14,12 @@ AntStock/.idea/compiler.xml
 =======
 *.gradle
 >>>>>>> c67edbf2ad34cab406f0d46d53d667e1be6b6ebb
+/AntStock/.idea
+AntStock/.idea/codeStyles/Project.xml
+AntStock/.idea/compiler.xml
+AntStock/.idea/dbnavigator.xml
+AntStock/.idea/gradle.xml
+AntStock/.idea/libraries/Gradle__commons_codec_commons_codec_1_5.xml
+AntStock/.idea/libraries/Gradle__commons_net_commons_net_3_3.xml
+AntStock/.idea/libraries/Gradle__dom4j_dom4j_1_6_1.xml
+AntStock/.idea/libraries/Gradle__junit_junit_4_12.xml
