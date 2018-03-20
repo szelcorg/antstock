@@ -26,6 +26,7 @@ public class Evaluate {
     private RatingEnum rating;
     private float Zscore;
     private float priceWhenEvaluatePEPBV;
+    private Integer dividend5year;
     private float dividendInZL;
     private String dividendDay;
     private String dividendPaymentDay;
@@ -48,7 +49,7 @@ public class Evaluate {
     public Evaluate(String companyName, float requiredPriceToBuy, float requiredPriceToSell, float priceToBookValue,
             float priceToEarning, RatingEnum rating, float Zscore, float priceWhenEvaluatePEPBV, float dividendInZL,
             SectorEnum sector, MarketEnum market, String dateChangeBuySell, String dateChangePointer, String dateNextUpdateBuySell, String dateEarliestBuySell,
-            String dateLatestBuySell, String dividendDay, String dividendPaymentDay ) {
+            String dateLatestBuySell, String dividendDay, String dividendPaymentDay, Integer dividend5year ) {
         this.companyName = companyName;
         this.requiredPriceToBuy = requiredPriceToBuy;
         this.requiredPriceToSell = requiredPriceToSell;
@@ -67,6 +68,7 @@ public class Evaluate {
         this.dateLatestBuySell = dateLatestBuySell;        
         this.dividendDay = dividendDay;
         this.dividendPaymentDay = dividendPaymentDay;
+        this.dividend5year = dividend5year;
     }
 
 
@@ -96,7 +98,7 @@ public class Evaluate {
 
     public Evaluate(String companyName){
         this(companyName, 0, 0, 0,
-                0, RatingEnum.RatingNotDefined, 0, 0, 0, SectorEnum.NOT_DEFINED, MarketEnum.NOT_DEFINED, "", "", "", "", "", "", "");
+                0, RatingEnum.RatingNotDefined, 0, 0, 0, SectorEnum.NOT_DEFINED, MarketEnum.NOT_DEFINED, "", "", "", "", "", "", "", -1);
     }
 
     public Integer getOrder() {
@@ -178,6 +180,14 @@ public class Evaluate {
     public String getDividendInZLStr() {
         return Settings.DECIMAL_FORMAT_FLOAT.format(dividendInZL);
     }
+
+    public int getDividend5year(){
+        return dividend5year;
+    }
+
+    public String getDividend5yearStr(){
+        return ""+dividend5year;
+    }
     
     public float getDividendPercent(){
         return 100f * getDividendInZL()/getCourse();
@@ -206,7 +216,11 @@ public class Evaluate {
     public void setDividendPaymentDay(String dividendPaymentDay) {
         this.dividendPaymentDay = dividendPaymentDay;
     }
-    
+
+    public void setDividend5year(Integer dividend5year) {
+        this.dividend5year = dividend5year;
+    }
+
     public float getPriceToBookValue() {
         return bookValuePerShare !=null ?  getCourse() / bookValuePerShare :
                 priceWhenEvaluatePEPBV==0 ? 0 : priceToBookValue * getCourse() / priceWhenEvaluatePEPBV;
@@ -381,6 +395,7 @@ public class Evaluate {
         rec.addField(dividendDay);
         rec.addField(dividendPaymentDay);
         rec.addField(market.toString());
+        rec.addField(dividend5year.toString());
         return rec;
     }
 

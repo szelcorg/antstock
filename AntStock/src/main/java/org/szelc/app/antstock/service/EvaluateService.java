@@ -77,6 +77,7 @@ public final class EvaluateService {
             String dateLatestBuySell = "";
             String dividendDay = "";
             String dividendPaymentDay = "";
+            Integer dividend5year = -1;
             MarketEnum market = MarketEnum.NOT_DEFINED;
             if (f.size() > 10) {
                 datePriceBuy = f.get(10);
@@ -94,7 +95,11 @@ public final class EvaluateService {
                                         dividendPaymentDay = f.get(16);
                                         if(f.size()>17){
                                             market = MarketEnum.valueOf(f.get(17));
+                                            if(f.size()>18){
+                                                dividend5year = Integer.valueOf(f.get(18));
+                                            }
                                         }
+
                                     }
                                 }
                             }
@@ -112,7 +117,7 @@ public final class EvaluateService {
 
             Evaluate evaluate = new Evaluate(companyName, requiredPriceToBuy, requiredPriceToSell, pricetToBookValue, priceToEarnings,
                     rating, Zscore, priceWhenEvaluatePEPBV, dividendInZL, sector, market, datePriceBuy, datePointer, dateNextUpdateBuySell, dateEarliestBuySell,
-                    dateLatestBuySell, dividendDay, dividendPaymentDay);
+                    dateLatestBuySell, dividendDay, dividendPaymentDay, dividend5year);
             if(financialReport4Q!=null) {
                 evaluate.setNumberOfShares(financialReport4Q.get(9).getValue().longValue() * 1000);
                 evaluate.setProfitIn4Q(financialReport4Q.get(4).getValue() * 1000 );

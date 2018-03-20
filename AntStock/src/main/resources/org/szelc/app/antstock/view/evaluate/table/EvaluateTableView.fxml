@@ -98,6 +98,14 @@
                         <PropertyValueFactory property="priceWhenEvaluatePEPBVStr" />
                     </cellValueFactory>
                 </TableColumn>
+
+
+                <TableColumn id="dividend5year" fx:id="columnDividend5year" minWidth="90.0" prefWidth="-1.0" text="Dividend 5 year">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="dividend5yearStr" />
+                    </cellValueFactory>
+                </TableColumn>
+
                 <TableColumn id="dividendInZL" fx:id="columnDividendMoney" minWidth="90.0" prefWidth="-1.0" text="Dividend (zł)">
                     <cellValueFactory>
                         <PropertyValueFactory property="dividendInZLStr" />
