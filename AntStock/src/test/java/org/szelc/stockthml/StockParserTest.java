@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.szelc.app.antstock.data.quotes.DayCompanyQuote;
 import org.szelc.financial.report.Report;
+import org.szelc.financial.report.reader.ReportSqliteReader;
 import org.szelc.financial.report.writer.ReportSqliteWriter;
 import org.szelc.logger.LOG;
 import org.szelc.sqlite.SQLiteJDBCDriverConnection;
@@ -62,6 +63,13 @@ public class StockParserTest {
             result.add(company);
         }
         return result;
+    }
+
+    @Test
+    public void displayFinancialReportLast4HForCompany(){
+        Long companyId = 221l;
+        ReportSqliteReader.report4QForCompany(companyId);
+
     }
 
     @Test

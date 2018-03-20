@@ -4,6 +4,7 @@ import org.sqlite.JDBC;
 import org.szelc.app.antstock.settings.Settings;
 import org.szelc.financial.report.Report;
 import org.szelc.financial.report.ReportData;
+import org.szelc.financial.report.sqlite.SqliteConnection;
 import org.szelc.logger.LOG;
 
 import java.sql.*;
@@ -13,18 +14,6 @@ import java.util.Map;
 
 public class ReportSqliteWriter {
 
-    private static Connection connect() {
-        Connection conn = null;
-        try {
-            Class.forName("org.sqlite.JDBC");
-            String url = Settings.DATABASE_SQLITE_PATH;//DriverManager.registerDriver(new JDBC());
-            LOG.i("URL ["+url+"]");
-            return DriverManager.getConnection(url);
-
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
     private static void close(Connection conn) {
         try {
@@ -36,12 +25,12 @@ public class ReportSqliteWriter {
 
     public static Map<String, Integer> getCompanyNameIdMap() throws SQLException {
         Map<String, Integer> result = new HashMap();
-        Connection conn = connect();
+        Connection conn = SqliteConnection.connect();
         String query = "select name, id from company";
         ResultSet rs = null;
         try {
             if(conn==null || conn.isClosed()){
-                LOG.w("Connection is not opened");
+                LOG.w("SqliteConnection is not opened");
                 return null;
             }
             rs = conn.createStatement().executeQuery(query);
@@ -71,8 +60,8 @@ public class ReportSqliteWriter {
             e.printStackTrace();
             return false;
         }
-        Connection conn = connect();
-        LOG.i("Connection to SQLite has been established.");
+        Connection conn = SqliteConnection.connect();
+        LOG.i("SqliteConnection to SQLite has been established.");
 
         for (Report report : reportList) {
             Integer companyId = companyNameIdMap.get(report.getCompanyName());

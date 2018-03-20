@@ -1,5 +1,6 @@
 package org.szelc.app.antstock.view.evaluate.table;
 
+import org.szelc.app.antstock.comparator.PriceToEarningComparator;
 import org.szelc.app.antstock.data.enumeration.MarketEnum;
 import org.szelc.app.antstock.statistic.CompanyTransactionStatistic;
 import org.szelc.app.antstock.view.evaluate.table.cell.EvaluateTableEditingCell;
@@ -81,6 +82,8 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
     public TableColumn<Evaluate, String> columnDividendDay;
     @FXML
     public TableColumn<Evaluate, String> columnDividendPaymentDay;
+    @FXML
+    public TableColumn<Evaluate, String> columnProfitPerShare;
 
     private TableUpdateEvent evaluateTableUpdate;
 
@@ -280,7 +283,8 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
         columnRequiredPriceToSell.setComparator(new FloatFormatComparator());
         columnPercentToSell.setComparator(new FloatFormatComparator());
         columnPriceToBookValue.setComparator(new FloatFormatComparator());
-        columnPriceToEarning.setComparator(new FloatFormatComparator());
+        columnPriceToEarning.setComparator(new PriceToEarningComparator());
+        columnProfitPerShare.setComparator(new FloatFormatComparator());
         columnRating.setComparator(new RatingComparator());
         columnZScore.setComparator(new FloatFormatComparator());
         columnDividendMoney.setComparator(new FloatFormatComparator());

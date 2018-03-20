@@ -78,6 +78,11 @@
                         <PropertyValueFactory property="priceToEarningStr" />
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn id="profitPerShare" fx:id="columnProfitPerShare" minWidth="70.0" prefWidth="-1.0" text="Profit share">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="profitPerShareStr" />
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn id="rating" fx:id="columnRating" minWidth="60.0" prefWidth="-1.0" text="Rating">
                     <cellValueFactory>
                         <PropertyValueFactory property="rating" />
