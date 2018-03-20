@@ -302,7 +302,7 @@ public final class QuoteService {
                 return true;
             }
             SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-            boolean result = Integer.valueOf(sdf.format(getTodayDateTime())) > 1820;
+            boolean result = Integer.valueOf(sdf.format(getTodayDateTime())) > 1819;
             if(result){
                 log.info("Brak aktualnych notowań. Jest po 18:20 - można pobrać aktualne notowania");
             }

@@ -71,7 +71,11 @@ public class EvaluateTableEditingCell extends EditingCell<Evaluate, String> {
             selEval.setDividendDay(newValue);
         } else if (column == t.getColumnDividendPaymentDay()) {
             selEval.setDividendPaymentDay(newValue);
-        } else {
+        }
+        else if(column==t.getColumnDividend5year()){
+            selEval.setDividend5year(Integer.valueOf(newValue));
+        }
+        else {
             log.warn("Column not found in EvaluateTable");
         }
 

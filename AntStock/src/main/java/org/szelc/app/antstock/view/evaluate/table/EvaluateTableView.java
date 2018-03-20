@@ -67,6 +67,8 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
     @FXML
     public TableColumn<Evaluate, String> columnPriceWhenEvaluatePEPBV;
     @FXML
+    public TableColumn<Evaluate, String> columnDividend5year;
+    @FXML
     public TableColumn<Evaluate, String> columnDividendMoney;
     @FXML
     public TableColumn<Evaluate, String> columnMarket;
@@ -204,6 +206,10 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
         return columnDateNextUpdateBuySell;
     }
 
+    public TableColumn<Evaluate, String> getColumnDividend5year() {
+        return columnDividend5year;
+    }
+
     public void setColumnDateNextUpdateBuySell(TableColumn<Evaluate, String> columnDateNextUpdateBuySell) {
         this.columnDateNextUpdateBuySell = columnDateNextUpdateBuySell;
     }
@@ -271,6 +277,7 @@ public class EvaluateTableView extends StockTableView implements TableInterface 
         setCellFactory(columnDateEarliestBuySell);
         setCellFactory(columnDateLatestBuySell);
         setCellFactory(columnDateNextUpdateBuySell);
+        setCellFactory(columnDividend5year);
         setCellFactory(columnDividendDay);
         setCellFactory(columnDividendPaymentDay);
     }

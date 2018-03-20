@@ -4,9 +4,13 @@ build
 distributions
 /.idea
 /.idea/workspace.xml
+<<<<<<< HEAD
 AntStock/.idea/codeStyles/Project.xml
 AntStock/.idea/compiler.xml
 AntStock/.idea/vcs.xml
 AntStock/build.gradle
 AntStock/.idea/workspace.xml
 AntStock/.idea/compiler.xml
+=======
+*.gradle
+>>>>>>> c67edbf2ad34cab406f0d46d53d667e1be6b6ebb

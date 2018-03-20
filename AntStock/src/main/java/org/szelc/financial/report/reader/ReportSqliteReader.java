@@ -30,6 +30,9 @@ public class ReportSqliteReader {
                 " where company_id = "+companyId+" and rf.id < 7 or rf.id=10  order by id desc limit 4 ) group by report_field_id";
 
         Connection conn= SqliteConnection.connect();
+        if(conn==null){
+            return result;
+        }
         try {
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
