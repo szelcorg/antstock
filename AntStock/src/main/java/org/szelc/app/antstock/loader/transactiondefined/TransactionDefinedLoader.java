@@ -29,7 +29,7 @@ public class TransactionDefinedLoader {
     public TransactionDefinedContainer loadTransactionsFromCSVFile(TransactionFilter filter) {
         TransactionDefinedContainer transactionDefinedContainer = new TransactionDefinedContainer();
         String company;
-        String bank;
+        String bank = "";
         TransactionType transactionType;
         Float priceToBuy;
         String dateEffectiveFrom;
@@ -50,7 +50,13 @@ public class TransactionDefinedLoader {
                 dateEffectiveFrom = f.get(3);
                 definedActivity = TransactionDefinedActivity.valueOf(f.get(4));
                 createdTime = dateFormat.format(new Date());
-                bank = f.get(6);
+                try {
+
+                    bank = f.get(6);
+                }
+                catch(ArrayIndexOutOfBoundsException e){
+
+                }
 
                 TransactionDefined data = new TransactionDefined(company, transactionType, priceToBuy, dateEffectiveFrom, definedActivity, bank);
                 transactionDefinedContainer.addTransactionData(data);

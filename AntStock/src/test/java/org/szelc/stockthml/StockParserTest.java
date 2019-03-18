@@ -21,7 +21,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class StockParserTest {
-    private static System.Logger LOGGER1 = System.getLogger("MyLogger");
+    //private static System.Logger LOGGER1 = System.getLogger("MyLogger");
     private static String URL_GPW_QUOTES_BANKIER = "http://www.bankier.pl/gielda/notowania/akcje";
     @Test
     public void sqlite() {
@@ -74,7 +74,9 @@ public class StockParserTest {
 
     @Test
     public void displayReportFromBankier(){
-        List<String> companyList = List.of("KGHM");
+        String kghm = "KGHM";
+        List<String> companyList = new ArrayList();
+        companyList.add(kghm);
         int countPage = 1;
         List<Report> reportList = StockParser.loadQuartalReportFromBankier(companyList, countPage);
         long t1 = System.currentTimeMillis();
@@ -108,7 +110,7 @@ public class StockParserTest {
 
     @Test
     public void displayMultiplePageMesssageOnet() throws Exception {
-        LOGGER1.log(System.Logger.Level.INFO, "display");
+        //LOGGER1.log(System.Logger.Level.INFO, "display");
         Assert.assertTrue(true);
         StockParser stockParser = new StockParser();
         boolean onlyToday = false;
